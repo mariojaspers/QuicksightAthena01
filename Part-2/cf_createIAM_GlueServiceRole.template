@@ -1,0 +1,30 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+      "GlueServiceRole": {
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+            "AssumeRolePolicyDocument": {
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": [
+                                "glue.amazonaws.com"
+                            ]
+                        },
+                        "Action": [
+                            "sts:AssumeRole"
+                        ]
+                    }
+                ]
+            },
+            "ManagedPolicyArns":[
+                                "arn:aws:iam::aws:policy/AWSGlueConsoleFullAccess",
+                                "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+                                "arn:aws:iam::aws:policy/AmazonS3FullAccess"],
+            "RoleName": "GlueServiceRole"
+        }
+      }
+    }
+}
