@@ -23,7 +23,7 @@
 1. From the IAM console click **Roles** and create a new role
 2. Name it **AWSGlueServiceRole**.  If you choose a different name you will need to manually create a new policy.
 3. Select the **AWS Glue Service Role** from the **AWS Service Role** list
-
+<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/glue_role_type.png)<br/>
 1. From the list of managed policies, attach the following:
   - AWSGlueServiceRole
   - AWSGlueServiceNotebookRole
@@ -33,7 +33,7 @@
 
 1. Open the Athena console
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
-
+<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
 2. Select the **Specify path in another account** radio button and enter **s3://serverless-analytics/canonical/NY-Pub/** for the S3 path.  Click Next.
 3. Do **not** add another data source and click Next.
@@ -48,7 +48,7 @@
 1. On the left hand side, click **Databases**
 2. Find the **labs** database and click on it
 3. Click **Tables in labs** to view our newly created table
-
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/show_taxi_table.png) <br />
 1. Click the table name and explore
 
 ## Querying Taxi Data
@@ -65,3 +65,4 @@ WHERE year BETWEEN '2013' AND '2016' AND type='yellow'
 ORDER BY pickup_datetime desc
 LIMIT 10;
 ```
+<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br />
