@@ -37,9 +37,9 @@ From the Glue ETL menu select **Jobs** and click **Add Job**
 
 1. Give your job a name, **instacart_etl** and select our service role.  Leave all of the other options unchanged but select a **Temporary Directory**
 2. From the **Data Sources** list select one of the Instcart tables, lets say **raw_orders**.  We can only select one table.
-![alt text] (http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
 1. When choosing our data targets select **Create tables in your data target**. Select **Amazon S3** for data store and **Parquet** for format.  Enter your own S3 bucket for target
-![alt text[ (http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_data_target.png "Enter your own S3 Bucket")
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_data_target.png "Enter your own S3 Bucket")
 1. In this step we can change the source to target column mapping but we will not change this now.  Click **Next**
 2. Click **Finish** to complete creating our ETL
 
@@ -119,7 +119,7 @@ There is a little bit of cleanup we need to do in order to help the crawler prod
 it generates some temporary files. We will need to delete them.  In the output S3 bucket delete files named **name_$folder$**, **_metadata** and **_common_metadata**
 
 From the Glue console select **Crawlers** and create a new crawler.  Point it to the top S3 bucket where you saved your results defined by **OUTPUT_S3_PATH** in the script above.  In my case that will be **s3://royon-demo/instacart/**.  Make sure you configure the table prefix to something other than raw_ so you can differentiate them from the previous ones we created, I used **table_**.  When the ETL job completes we can run our new crawler.  After the crawler completes you should see your new tables.
-![alt text] (http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/instacart_parquet_tables.png "Parquet Tables")
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/instacart_parquet_tables.png "Parquet Tables")
 Go ahead and explore the data.  Here is an example SQL query that counts orders and groups them by department.
 
 ```sql
