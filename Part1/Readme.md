@@ -9,7 +9,9 @@
 1. Access the IAM console and select **Users**.  Then select your username
 2. If you already have **AdministrorAccess** policy associated with your account you can skip the permission steps.
 3. Click **Add Permissions** button
-1. Select **Attach Existing Policies Directly**
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/select_user.png "Add Permissions")
+1. Select **Attach Existing Policies Directly** box and hit **Create Policy**
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/add_permission.png "Attach Existing Policies Directly")
 1. From the list of managed policies, attach the following:
   - AmazonAthenaFullAccess
   - AWSQuicksightAthenaAccess
@@ -41,10 +43,10 @@ LOCATION 's3://serverless-analytics/canonical/NY-Pub/'
 1. Since this is a partitioned table, denoted by the PARTITIONED BY clause, we need to update the partitions.<br>
 
 Enter `MSCK REPAIR TABLE taxis` and click Run Query
-2. Verify that all partitions were added by entering `SHOW PARTITIONS taxis` and click Run Query
-
-1. Verify that we have data by clicking the icon to the right of our **Taxis** table
-
+2. Verify that all partitions were added by entering `SHOW PARTITIONS taxis.trips` and click Run Query
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/show_partitions.png "SHOW PARTITIONS trips")
+1. Verify that we have data by clicking the icon to the right of our **Trips** table
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/select_taxis.png "Select Trips Table")
 1. Try selecting the top ten yellow taxis in 2016 ordered by pickup time in descending order
 
 ```sql
