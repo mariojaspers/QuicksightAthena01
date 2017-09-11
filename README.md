@@ -4,6 +4,6 @@ Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting d
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
 - [Part 1-Exploring NYC Taxi public data set](./Part1)</br>
 - [Part 2-Automating creation of tables and partitions](./Part-2)</br>
-- [Part 3-Crawling, Transforming and Querying](./Part-3)</br>
-- [Part 4-Combining and Joining Data in QuickSight](./Part-4)</br>
-- [Part 5-Visualizing and Dashbaording with QuickSight](./Part-5)</br>
+- [Part 3-Crawling, Transforming and Querying <<limit to crawling?](./Part-3)</br>
+- [Part 4-Combining and Joining Data in QuickSight <<NEW](./Part-4)</br>
+- [Part 5-Visualizing and Dashbaording with QuickSight<<NEW & Existing](./Part-5)</br>
