@@ -10,7 +10,7 @@
 1. Create an [AWS account](https://aws.amazon.com/free/)
 
 ## Setup IAM Permissions for AWS Glue
-#### Alternatively, you can run the [CloudFormation Template](cf_createIAMRole_GlueServiceRole.json) in this folder cf_createIAMRole_GlueServiceRole.json
+#### Alternatively, you can run the [CloudFormation Template](https://github.com/mariojaspers/QuicksightAthena01/blob/master/Part-2/cf_createIAM_GlueServiceRole.json) in this folder cf_createIAMRole_GlueServiceRole.json
 1. Access the IAM console and select **Users**.  Then select your username
 2. Click **Add Permissions** button
 3. From the list of managed policies, attach the following:
