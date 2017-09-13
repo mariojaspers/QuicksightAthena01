@@ -1,6 +1,6 @@
 # Part 1 - Exploring NYC Taxi public data set
 
-## Prerequisits
+## Prerequisites
 
 1. Create an [AWS account](https://aws.amazon.com/free/)
 
