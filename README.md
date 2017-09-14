@@ -61,17 +61,41 @@ Insert stuff for Quicksight
   - AmazonS3FullAccess
 
 ### Create S3 Bucket for our data
-1. Create
-
-## Query a file on S3
 1. Open the S3 Console from the Services drop down menu
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s301.PNG)<br/>
 2. Click on **Create Bucket**
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s302.PNG)<br/>
 2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s303.PNG)<br/>
+2. Your bucket is ready for use.
+
+## Query a file on S3
+1. Open the S3 Console from the Services drop down menu
+<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s301.PNG)<br/>
 2. Click a newly created bucket, by you or by our CloudFormation script.
+1. Hit **Create folder** and name it "My-First-Athena-Table"
+1. Download sample dataset [2010 Medicare Carrier Data](http://go.cms.gov/19xxPN4) and click on new folder and **Upload** the downloaded file. For your reference, [data dictionary](https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/BSAPUFS/Downloads/2010_Carrier_Data_Dictionary.pdf) for this dataset.
+
 1. Open the Athena console
+2. Select default database and run the following query
+```sql
+CREATE EXTERNAL TABLE default.medicare_payments_2010 (
+    BENE_SEX_IDENT_CD integer,
+    BENE_AGE_CAT_CD integer,
+    CAR_LINE_ICD9_DGNS_CD string,
+    CAR_LINE_HCPCS_CD string,
+    CAR_LINE_BETOS_CD integer, 
+    CAR_LINE_SRVC_CNT integer, 
+    CAR_LINE_PRVDR_TYPE_CD integer,
+    CAR_LINE_CMS_TYPE_SRVC_CD integer,
+    CAR_LINE_PLACE_OF_SRVC_CD string, 
+    CAR_HCPS_PMT_AMT decimal,
+    CAR_LINE_CNT integer
+    )
+STORED AS TEXT
+LINES DELIMITED BY '\n'
+FIELDS DELIMITEED BY ','
+LOCATION 's3://mybucketname/My-First-Athena-Table/'```
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
