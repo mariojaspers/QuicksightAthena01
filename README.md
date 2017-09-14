@@ -103,7 +103,8 @@ SHOW CREATE TABLE default.medicare_payments_2010
 ```
 
 More resources:
-[Athena Supported Formats](http://docs.aws.amazon.com/athena/latest/ug/supported-formats.html)
+- [Athena Supported Formats](http://docs.aws.amazon.com/athena/latest/ug/supported-formats.html)
+- [Athena Language Reference](http://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
 
 Congratulations, you queried your first S3 file through Amazon Athena!
 
