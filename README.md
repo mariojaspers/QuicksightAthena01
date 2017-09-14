@@ -99,6 +99,12 @@ WITH SERDEPROPERTIES (
 ) LOCATION 's3://slalom-sea-datalake/My-First-Athena-Table/'
 TBLPROPERTIES ('has_encrypted_data'='false');
 ```
+```sql
+SELECT * 
+FROM default.medicare_payments_2010 LIMIT 100
+```
+Congratulations, you queried your first S3 file through athena!
+## Introducing Glue and Athena
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
