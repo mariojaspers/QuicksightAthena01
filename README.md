@@ -96,6 +96,7 @@ LINES DELIMITED BY '\n'
 FIELDS DELIMITEED BY ','
 LOCATION 's3://mybucketname/My-First-Athena-Table/'
 ```
+
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
