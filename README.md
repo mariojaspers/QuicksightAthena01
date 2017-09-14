@@ -151,6 +151,5 @@ Instacart has published a public datasource to provide insight into consumer sho
 Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 ### Expected output
-<br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
-# Part 3 - Crawling, Transforming and Querying
+![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
 
