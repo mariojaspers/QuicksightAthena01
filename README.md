@@ -8,7 +8,7 @@ Hands on workshop is broken up into 5 different sections to get you familar with
 - [20 min - Introducing Glue and Athena](./Part-4)</br>
 - [50 min - Visualizing and Dashboarding with QuickSight](./Part-5)</br>
 
-## Sign Up for AWS
+# Sign Up for AWS
 
 ### Create your AWS Account
 Navigate to [Amazon AWS Free Tier](aws.amazon.com/free).
@@ -69,7 +69,7 @@ Insert stuff for Quicksight
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s303.PNG)<br/>
 2. Your bucket is ready for use.
 
-## Query a file on S3
+# Query a file on S3
 1. Open the S3 Console from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "My-First-Athena-Table"
@@ -103,9 +103,12 @@ TBLPROPERTIES ('has_encrypted_data'='false');
 SELECT * 
 FROM default.medicare_payments_2010 LIMIT 100
 ```
-Congratulations, you queried your first S3 file through athena!
-## Introducing Glue and Athena
-2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
+Congratulations, you queried your first S3 file through Amazon Athena!
+
+# Introducing Glue and Athena
+One of the many benefits of Glue, is its ability to discover and profile data from S3 Objects. This become handy in quickly creating a catalog of new and incoming data.
+To get started:
+1. In Athena, from the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
 2. Select the **Specify path in another account** radio button and enter **s3://serverless-analytics/canonical/NY-Pub/** for the S3 path.  Click Next.
