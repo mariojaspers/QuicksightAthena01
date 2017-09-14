@@ -91,10 +91,12 @@ CREATE EXTERNAL TABLE default.medicare_payments_2010 (
     CAR_HCPS_PMT_AMT decimal,
     CAR_LINE_CNT integer
     )
-STORED AS TEXT
-LINES DELIMITED BY '\n'
-FIELDS DELIMITEED BY ','
-LOCATION 's3://mybucketname/My-First-Athena-Table/'
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+  'serialization.format' = ',',
+  'field.delim' = ','
+) LOCATION 's3://slalom-sea-datalake/My-First-Athena-Table/'
+TBLPROPERTIES ('has_encrypted_data'='false')
 ```
 
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
