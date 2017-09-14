@@ -77,6 +77,7 @@ Insert stuff for Quicksight
 
 1. Open the Athena console from the Services dropdown.
 2. Create a table manually in the default database named **medicare_payments_2010**:
+
 |Field Name|Data Type|
 |----------|:--------|
 |BENE_SEX_IDENT_CD|int|
