@@ -60,8 +60,12 @@ Insert stuff for Quicksight
 1. Create
 
 ## Query a file on S3
-
 1. Open the S3 Console from the Services drop down menu
+<br />![alt text](images/s301.png)<br/>
+2. Click on **Create Bucket**
+<br />![alt text](images/s302.png)<br/>
+2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
+<br />![alt text](images/s303.png)<br/>
 2. Click a newly created bucket, by you or by our CloudFormation script.
 1. Open the Athena console
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
