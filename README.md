@@ -92,10 +92,19 @@ Insert stuff for Quicksight
 |CAR_HCPS_PMT_AMT|string|
 |CAR_LINE_CNT|string|
 
+3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
 SELECT * 
 FROM default.medicare_payments_2010 LIMIT 100
 ```
+4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
+```sql
+SHOW CREATE TABLE default.medicare_payments_2010
+```
+
+More resources:
+[Athena Supported Formats](http://docs.aws.amazon.com/athena/latest/ug/supported-formats.html)
+
 Congratulations, you queried your first S3 file through Amazon Athena!
 
 # Introducing Glue and Athena
