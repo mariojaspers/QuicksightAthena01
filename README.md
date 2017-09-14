@@ -116,7 +116,8 @@ To get started:
 4. For frequency leave as **Run on Demand** and click Next.
 5. Click **Add Database** button and give your database a name, say **labs**
 6. In order to avoid table name collision Glue generates a unique table name so we'll need to provide a prefix, say **taxis_** (include the underscore)
-7. Click **Finish**
+7. Click **Next**
+8. Review the information is correct, specifically the "Include Path" field. Hit **Finish** when complete.
 8. Check the box next to your newly created crawler and click **Run Crawler**.  It should take about a minute to run and create our table.
 
 ## Exploring Glue Data Catalog
@@ -143,6 +144,9 @@ LIMIT 10;
 ```
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br />
 
+## Breakout - Load Instacart Data
+In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
+Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
 # Part 3 - Crawling, Transforming and Querying
 
 ## References
@@ -152,7 +156,7 @@ LIMIT 10;
 
 ## The Data Source
 
-We will use a public data set provided by [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
+We will use a public data set provided by 
 
 ## Crawling
 
