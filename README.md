@@ -145,7 +145,7 @@ WHERE year BETWEEN '2013' AND '2016' AND type='yellow'
 ORDER BY pickup_datetime desc
 LIMIT 10;
 ```
-<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br />
+<br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br/>
 
 ## Crawling Breakout - Discover Instacart Data
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
