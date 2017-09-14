@@ -158,13 +158,13 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 #Visualizing and Dashboarding with Quicksight
 
-##Getting the data
+## Getting the data
 
 blablebla
 
-##SPICE 
+## SPICE 
 
 blablabal 
 
-###the end
+### the end
 
