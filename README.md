@@ -156,3 +156,15 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 ### Expected output
 ![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
 
+#Visualizing and Dashboarding with Quicksight
+
+##Getting the data
+
+blablebla
+
+##SPICE 
+
+blablabal 
+
+###the end
+
