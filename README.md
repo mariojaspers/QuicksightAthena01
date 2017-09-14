@@ -2,7 +2,7 @@
 Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
 
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
-- [ 5 min - Sign Up for AWS ($100 Credit)](./Part1)</br>
+- [5 min  - Sign Up for AWS ($100 Credit)](./Part1)</br>
 - [10 min - Architecture and Permissions](./Part-2)</br>
 - [20 min - Query a file on S3](./Part-3)</br>
 - [20 min - Introducing Glue and Athena](./Part-4)</br>
@@ -28,14 +28,15 @@ To apply credit voucher:
 ## Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it.
 <br/>
-![alt text](https://www.lucidchart.com/publicSegments/view/df5d83cd-3495-4da2-a5f6-cb37e006b6e2/image.png)
-
+![alt text](https://www.lucidchart.com/publicSegments/view/e8256598-2b81-4121-a57f-69783a55f968/image.png)
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
 <hr/>
 ## Setup IAM Permissions for Amazon Athena
+Insert stuff for Athena
 ## Setup IAM Permissions for Amazon QuickSight
+Insert stuff for Quicksight
 ## Setup IAM Permissions for AWS Glue
-#### Alternatively, you can run the [CloudFormation Template](https://github.com/mariojaspers/QuicksightAthena01/blob/master/Part-2/cf_createIAM_GlueServiceRole.json) in this folder cf_createIAMRole_GlueServiceRole.json
+#### Alternatively, you can run the [CloudFormation Template](scripts/cf_createIAM_GlueServiceRole.json) in this folder cf_createIAMRole_GlueServiceRole.json
 
 1. Access the IAM console and select **Users**.  Then select your username
 2. Click **Add Permissions** button
@@ -44,7 +45,7 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
   - CloudWatchLogsReadOnlyAccess
   - AWSCloudFormationReadOnlyAccess
 
-## Setup AWS Glue default service role
+### Setup AWS Glue default service role
 
 1. From the IAM console click **Roles** and create a new role
 2. Name it **AWSGlueServiceRole**.  If you choose a different name you will need to manually create a new policy.
@@ -55,8 +56,13 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
   - AWSGlueServiceNotebookRole
   - AmazonS3FullAccess
 
-## Creating an Athena Table using Glue Crawler
+### Create S3 Bucket for our data
+1. Create
 
+## Query a file on S3
+
+1. Open the S3 Console from the Services drop down menu
+2. Click a newly created bucket, by you or by our CloudFormation script.
 1. Open the Athena console
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
