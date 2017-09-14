@@ -71,12 +71,11 @@ Insert stuff for Quicksight
 
 ## Query a file on S3
 1. Open the S3 Console from the Services drop down menu
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s301.PNG)<br/>
-2. Click a newly created bucket, by you or by our CloudFormation script.
+2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "My-First-Athena-Table"
-1. Download sample dataset [2010 Medicare Carrier Data](http://go.cms.gov/19xxPN4) and click on new folder and **Upload** the downloaded file. For your reference, [data dictionary](https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/BSAPUFS/Downloads/2010_Carrier_Data_Dictionary.pdf) for this dataset.
+1. Download sample dataset [2010 Medicare Carrier Data](http://go.cms.gov/19xxPN4) and click on new folder and **Upload** the downloaded file. For your reference, here is the [data dictionary](https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/BSAPUFS/Downloads/2010_Carrier_Data_Dictionary.pdf) for this dataset.
 
-1. Open the Athena console
+1. Open the Athena console from the Services dropdown.
 2. Select default database and run the following query
 ```sql
 CREATE EXTERNAL TABLE default.medicare_payments_2010 (
@@ -95,7 +94,8 @@ CREATE EXTERNAL TABLE default.medicare_payments_2010 (
 STORED AS TEXT
 LINES DELIMITED BY '\n'
 FIELDS DELIMITEED BY ','
-LOCATION 's3://mybucketname/My-First-Athena-Table/'```
+LOCATION 's3://mybucketname/My-First-Athena-Table/'
+```
 2. From the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
