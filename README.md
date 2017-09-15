@@ -25,7 +25,7 @@ To apply credit voucher:</br>
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/myAccount.PNG)<br/><br/>
 1. Click on credit on the left hand side menu.
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/><br/>
-1.Enter the promo code provided and follow the instructions.
+1. Enter the promo code provided and follow the instructions.
 
 ## Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it.
