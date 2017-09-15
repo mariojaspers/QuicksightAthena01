@@ -2,11 +2,11 @@
 Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
 
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
-- [5 min  - Sign Up for AWS ($100 Credit)](./Part1)</br>
-- [10 min - Architecture and Permissions](./Part-2)</br>
-- [20 min - Query a file on S3](./Part-3)</br>
-- [20 min - Introducing Glue and Athena](./Part-4)</br>
-- [50 min - Visualizing and Dashboarding with QuickSight](./Part-5)</br>
+- [5 min  - Sign Up for AWS ($100 Credit)](#sign-up-for-aws)</br>
+- [10 min - Architecture and Permissions](#architecture-and-permissions)</br>
+- [20 min - Query a file on S3](#query-a-file-on-s3)</br>
+- [20 min - Introducing Glue and Athena](#introduction-glue-and-athena)</br>
+- [50 min - Visualizing and Dashboarding with QuickSight](#visualizing-and-dashboarding-with-quicksight)</br>
 
 # Sign Up for AWS
 
@@ -19,13 +19,13 @@ For showing up today at this workshop, AWS will provide a $100 credit voucher to
 ### Apply Credit to your Account
 The workshop facilitators will provide you with a credit voucher to apply to your account. This will give you plenty of credit to complete today's workshop and continue exploring AWS services.
 
-To apply credit voucher:
-1.Click on your user name at the top right corner of the console
-1.Navigate to *my account* in the top right corner of the console
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/myAccount.PNG)<br/>
-1.Click on credit on the left hand side menu.
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/>
-1.Enter the promo code provided and follow the instructions.
+To apply credit voucher:</br>
+1. Click on your user name at the top right corner of the console
+1. Navigate to *my account* in the top right corner of the console
+<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/myAccount.PNG)<br/><br/>
+1. Click on credit on the left hand side menu.
+<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/><br/>
+1. Enter the promo code provided and follow the instructions.
 
 ## Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it.
@@ -74,34 +74,37 @@ Insert stuff for Quicksight
 # Query a file on S3
 1. Open the S3 Console from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
-1. Hit **Create folder** and name it "My-First-Athena-Table"
-1. Download sample dataset [2010 Medicare Carrier Data](http://go.cms.gov/19xxPN4) and click on new folder and **Upload** the downloaded file. For your reference, here is the [data dictionary](https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/BSAPUFS/Downloads/2010_Carrier_Data_Dictionary.pdf) for this dataset.
+1. Hit **Create folder** and name it "B2B"
+1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
 
 1. Open the Athena console from the Services dropdown.
-2. Create a table manually in the default database named **medicare_payments_2010**:
-
+2. Create a table manually called **orders** in the default database named **labs**:
+### Orders
 |Field Name|Data Type|
 |----------|:--------|
-|BENE_SEX_IDENT_CD|int|
-|BENE_AGE_CAT_CD|int|
-|CAR_LINE_HCPCS_CD|string|
-|CAR_LINE_ICD9_DGNS_CD|string|
-|CAR_LINE_BETOS_CD|string|
-|CAR_LINE_SRVC_CNT|string|
-|CAR_LINE_PRVDR_TYPE_CD|string|
-|CAR_LINE_CMS_TYPE_SRVC_CD|string|
-|CAR_LINE_PLACE_OF_SRVC_CD|string|
-|CAR_HCPS_PMT_AMT|string|
-|CAR_LINE_CNT|string|
+|ROW_ID|int|
+|ORDER_ID|string|
+|ORDER_DATE|date|
+|SHIP_DATE|date|
+|SHIP_MODE_ID|int|
+|CUSTOMER_ID|string|
+|SEGMENT|int|
+|PRODUCT_ID|string|
+|SALES|double|
+|COMPANY_ID|int|
+|QUANTITY|int|
+|DISCOUNT_PCT|double|
+|PROFIT_AMT|double|
+
 
 3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
 SELECT * 
-FROM default.medicare_payments_2010 LIMIT 100
+FROM labs.orders LIMIT 100
 ```
 4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
-SHOW CREATE TABLE default.medicare_payments_2010
+SHOW CREATE TABLE default.orders
 ```
 
 More resources:
@@ -149,6 +152,52 @@ LIMIT 10;
 ```
 <br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br/>
 
+```sql
+SELECT 
+  year,
+  type, 
+  count(*), 
+  avg(fare_amount) avg_fare, 
+  lag(fare_amount) over(partition by type order by year desc) last_year_avg_fare
+FROM labs.taxi_ny_pub
+GROUP BY year, type
+```
+
+You have the ability to **Save a query** for future re-use.
+
+## Breakout - Load B2B Dataset
+
+Now that we have learned about crawlers, lets put it to use to load the rest of our [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip) dataset.
+
+- Unzip the data, and upload it to your S3 Bucket **remember, one folder represents one table.**
+- Run a crawler through your bucket to discovery the dataset.
+- Add new tables to the **labs** database with prefix **b2b_**
+
+Make sure to check fields, and how Glue is parsing your data. Correct any mistakes. Once complete, you should be able to run this query: 
+```sql
+SELECT
+  year(date_parse(Order_Date,'%c/%e/%Y')) Order_Year,
+  Company_Name,
+  SUM(quantity) Quantity,
+  SUM(sales) Total_Sales,
+  SUM(sales)/revenue_billion Sales_to_Revenue_Ratio
+FROM labs.b2b_orders o
+  JOIN labs.b2b_company co on  co.company_id = o.company_id
+  JOIN labs.b2b_customer cu on cu.customer_id = o.customer_id
+  JOIN labs.b2b_product p on p.product_id = o.product_id
+  JOIN labs.b2b_segment s on s.segment_id = o.segment_id
+  JOIN labs.b2b_ship_mode sm on sm.ship_mode_id = o.ship_mode_id
+  JOIN labs.b2b_company_financials cp on cp.company_id = co.company_id
+  JOIN labs.b2b_industry i on i.industry_id = co.industry_id
+GROUP BY
+  year(date_parse(Order_Date,'%c/%e/%Y')),
+  Company_Name,
+  revenue_billion
+ORDER BY
+  SUM(sales)/revenue_billion DESC
+LIMIT 100
+```
+
 ## Crawling Breakout - Discover Instacart Data
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
 Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
@@ -156,9 +205,18 @@ Instacart has published a public datasource to provide insight into consumer sho
 Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 ### Expected output
-![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
+![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/instacartResults.PNG "Expected Results")
 
-# Visualizing and Dashboarding with Quicksight
+
+## Notes on best practices
+- Partition your data
+- Compress your data!
+- With large datasets, split your files into ~100MB files
+- Convert data to a columnar format, with large datasets. 
+
+For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/) on AWS Big Data blog.
+
+# Visualizing and Dashboarding with QuickSight
 
 ## Getting the data
 
