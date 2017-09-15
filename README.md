@@ -78,8 +78,9 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
 
 1. Open the **Athena** console from the Services dropdown.
-2. Create a table manually called **orders** in the a database named **labs**:
-### Orders
+2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
+<br/>![alt text](/images/createTableManually.png)</br>
+### Orders Schema
 |Field Name|Data Type|
 |----------|:--------|
 |ROW_ID|int|
