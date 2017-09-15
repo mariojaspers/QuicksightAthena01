@@ -64,8 +64,11 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
 2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
 <br />![alt text](/images/s303.PNG)<br/>
 2. Your bucket is ready for use.
+
 </hr>
+
 </br>
+
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
 1. Open the S3 Console from the Services drop down menu
