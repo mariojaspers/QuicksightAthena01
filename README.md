@@ -150,6 +150,17 @@ WHERE year BETWEEN '2013' AND '2016' AND type='yellow'
 ORDER BY pickup_datetime desc
 LIMIT 10;
 ```
+```sql
+SELECT 
+  year,
+  type, 
+  count(*), 
+  avg(fare_amount) avg_fare, 
+  lag(fare_amount) over(partition by type order by year desc) last_year_avg_fare
+FROM labs.taxi_ny_pub
+GROUP BY year, type
+```
+
 <br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br/>
 
 ## Crawling Breakout - Discover Instacart Data
