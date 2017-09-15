@@ -80,7 +80,7 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 
 1. Open the **Athena** console from the Services dropdown.
 2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
-<br/>![alt text](/images/createTableManually.png)</br>
+<br/>![alt text](/images/CreateManualTable.png)</br>
 ### Orders Schema
 |Field Name|Data Type|
 |----------|:--------|
