@@ -22,27 +22,21 @@ The workshop facilitators will provide you with a credit voucher to apply to you
 To apply credit voucher:</br>
 1. Click on your user name at the top right corner of the console
 1. Navigate to *my account* in the top right corner of the console
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/myAccount.PNG)<br/><br/>
+<br />![alt text](/images/myAccount.PNG)<br/><br/>
 1. Click on credit on the left hand side menu.
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/><br/>
+<br />![alt text](/images/Credit.PNG)<br/><br/>
 1. Enter the promo code provided and follow the instructions.
 
-## Architecture and Permissions
-Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it.
+# Architecture and Permissions
+Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
 <br/>
-![alt text](https://www.lucidchart.com/publicSegments/view/e8256598-2b81-4121-a57f-69783a55f968/image.png)
+![alt text](https://www.lucidchart.com/publicSegments/view/a17a8684-4bc6-4d14-b885-4f4dc5878e7e/image.png)
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
 <hr/>
 
-## Setup IAM Permissions for Amazon Athena
-Insert stuff for Athena
-
-## Setup IAM Permissions for Amazon QuickSight
-Insert stuff for Quicksight
-
 ## Setup IAM Permissions for AWS Glue
 
-#### Alternatively, you can run the [CloudFormation Template](scripts/cf_createIAM_GlueServiceRole.json) in this folder cf_createIAMRole_GlueServiceRole.json
+#### Alternatively, you can run the [CloudFormation Template](/scripts/cf_createIAM_GlueServiceRole.json).
 
 1. Access the IAM console and select **Users**.  Then select your username
 2. Click **Add Permissions** button
@@ -62,7 +56,7 @@ Insert stuff for Quicksight
   - AWSGlueServiceNotebookRole
   - AmazonS3FullAccess
 
-### Create S3 Bucket for our data
+## Create S3 Bucket for our data
 1. Open the S3 Console from the Services drop down menu
 <br />![alt text](/images/s301.PNG)<br/>
 2. Click on **Create Bucket**
@@ -70,15 +64,18 @@ Insert stuff for Quicksight
 2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
 <br />![alt text](/images/s303.PNG)<br/>
 2. Your bucket is ready for use.
-
+</hr>
+</br>
 # Query a file on S3
+To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
 1. Open the S3 Console from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "B2B"
+1. Create another folder within B2B called "orders"
 1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
 
-1. Open the Athena console from the Services dropdown.
-2. Create a table manually called **orders** in the default database named **labs**:
+1. Open the **Athena** console from the Services dropdown.
+2. Create a table manually called **orders** in the a database named **labs**:
 ### Orders
 |Field Name|Data Type|
 |----------|:--------|
