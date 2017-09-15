@@ -22,7 +22,7 @@ The workshop facilitators will provide you with a credit voucher to apply to you
 To apply credit voucher:
 1.Click on your user name at the top right corner of the console
 1.Navigate to *my account* in the top right corner of the console
-<br />![alt text]("https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/My+Account.PNG")<br/>
+<br />![alt text]("https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/My Account.PNG")<br/>
 1.Click on credit on the left hand side menu.
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/>
 1.Enter the promo code provided and follow the instructions.
