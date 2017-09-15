@@ -197,6 +197,7 @@ ORDER BY
   SUM(sales)/revenue_billion DESC
 LIMIT 100
 ```
+<br/>![alt text](/images/TopCustomersResults.PNG)<br/>
 
 ## Crawling Breakout - Discover Instacart Data
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
