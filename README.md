@@ -2,8 +2,8 @@
 Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
 
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
-- [5 min  - Sign Up for AWS ($100 Credit)](./Part1)</br>
-- [10 min - Architecture and Permissions](./Part-2)</br>
+- [5 min  - Sign Up for AWS ($100 Credit)](#Sign-Up-for-AWS)</br>
+- [10 min - Architecture and Permissions](#Query-a-file-on-S3)</br>
 - [20 min - Query a file on S3](./Part-3)</br>
 - [20 min - Introducing Glue and Athena](./Part-4)</br>
 - [50 min - Visualizing and Dashboarding with QuickSight](./Part-5)</br>
@@ -19,7 +19,7 @@ For showing up today at this workshop, AWS will provide a $100 credit voucher to
 ### Apply Credit to your Account
 The workshop facilitators will provide you with a credit voucher to apply to your account. This will give you plenty of credit to complete today's workshop and continue exploring AWS services.
 
-To apply credit voucher:
+To apply credit voucher:</br>
 1.Click on your user name at the top right corner of the console
 1.Navigate to *my account* in the top right corner of the console
 <br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/myAccount.PNG)<br/>
