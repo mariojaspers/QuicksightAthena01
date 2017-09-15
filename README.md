@@ -119,7 +119,7 @@ Congratulations, you queried your first S3 file through Amazon Athena!
 One of the many benefits of Glue, is its ability to discover and profile data from S3 Objects. This become handy in quickly creating a catalog of new and incoming data.
 To get started:
 1. In Athena, from the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
-<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/create_table_crawler.png)<br/>
+<br />![alt text](/images/CreateAUtomaticTable.png)<br/>
 1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
 2. Select the **Specify path in another account** radio button and enter **s3://serverless-analytics/canonical/NY-Pub/** for the S3 path.  Click Next.
 3. Do **not** add another data source and click Next.
