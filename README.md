@@ -4,8 +4,9 @@ Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting d
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
 - [5 min  - Sign Up for AWS ($100 Credit)](#sign-up-for-aws)</br>
 - [10 min - Architecture and Permissions](#architecture-and-permissions)</br>
-- [20 min - Query a file on S3](#query-a-file-on-s3)</br>
-- [20 min - Introducing Glue and Athena](#introduction-glue-and-athena)</br>
+- [10 min - Query a file on S3](#query-a-file-on-s3)</br>
+- [10 min - Introducing Glue & Athena](#introduction-glue-and-athena)</br>
+- [20 min - Breakout Exercises](#breakout-exercises)</br>
 - [50 min - Visualizing and Dashboarding with QuickSight](#visualizing-and-dashboarding-with-quicksight)</br>
 
 # Sign Up for AWS
@@ -164,7 +165,9 @@ FROM labs.taxi_ny_pub
 GROUP BY year, type
 ```
 
-You have the ability to **Save a query** for future re-use.
+- Remember, you have the ability to **Save a query** for future re-use and reference.
+
+# Breakout Exercises
 
 ## Breakout 1 - Load B2B Dataset
 
