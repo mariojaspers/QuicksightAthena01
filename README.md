@@ -20,10 +20,12 @@ For showing up today at this workshop, AWS will provide a $100 credit voucher to
 The workshop facilitators will provide you with a credit voucher to apply to your account. This will give you plenty of credit to complete today's workshop and continue exploring AWS services.
 
 To apply credit voucher:
-  1.Click on your user name at the top right corner of the console
-  1.Navigate to *my account* in the top right corner of the console
-  1.Click on credit on the left hand side menu.
-  1.Enter the promo code provided and follow the instructions.
+1.Click on your user name at the top right corner of the console
+1.Navigate to *my account* in the top right corner of the console
+<br />![alt text]("https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/My+Account.PNG")<br/>
+1.Click on credit on the left hand side menu.
+<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/Credit.PNG)<br/>
+1.Enter the promo code provided and follow the instructions.
 
 ## Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it.
