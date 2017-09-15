@@ -169,10 +169,9 @@ You have the ability to **Save a query** for future re-use.
 
 Now that we have learned about crawlers, lets put it to use to load the rest of our [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip) dataset.
 
-- Unzip the data, and upload it to your S3 Bucket
+- Unzip the data, and upload it to your S3 Bucket **remember, one folder represents one table.**
 - Run a crawler through your bucket to discovery the dataset.
-
-#### Remember, one folder represents one table.
+- Add new tables to the **labs** database with prefix **b2b_**
 
 Make sure to check fields, and how Glue is parsing your data. Correct any mistakes. Once complete, you should be able to run this query: 
 ```sql
