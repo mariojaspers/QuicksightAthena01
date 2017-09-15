@@ -161,6 +161,14 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 ### Expected output
 ![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
 
+## Notes on best practices
+- Partition your data
+- Compress your data!
+- With large datasets, split your files into ~100MB files
+- Convert data to a columnar format, with large datasets. 
+
+For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/) on AWS Big Data blog.
+
 # Visualizing and Dashboarding with QuickSight
 
 ## Getting the data
