@@ -64,11 +64,11 @@ Insert stuff for Quicksight
 
 ### Create S3 Bucket for our data
 1. Open the S3 Console from the Services drop down menu
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s301.PNG)<br/>
+<br />![alt text](/images/s301.PNG)<br/>
 2. Click on **Create Bucket**
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s302.PNG)<br/>
+<br />![alt text](/images/s302.PNG)<br/>
 2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
-<br />![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/s303.PNG)<br/>
+<br />![alt text](/images/s303.PNG)<br/>
 2. Your bucket is ready for use.
 
 # Query a file on S3
@@ -205,7 +205,7 @@ Instacart has published a public datasource to provide insight into consumer sho
 Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 ### Expected output
-![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/instacartResults.PNG "Expected Results")
+![alt text](/images/instacartResults.PNG "Expected Results")
 
 
 ## Notes on best practices
