@@ -74,7 +74,7 @@ Insert stuff for Quicksight
 # Query a file on S3
 1. Open the S3 Console from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
-1. Hit **Create folder** and name it "My-First-Athena-Table"
+1. Hit **Create folder** and name it "B2B"
 1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
 
 1. Open the Athena console from the Services dropdown.
