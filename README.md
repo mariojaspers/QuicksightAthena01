@@ -150,6 +150,8 @@ WHERE year BETWEEN '2013' AND '2016' AND type='yellow'
 ORDER BY pickup_datetime desc
 LIMIT 10;
 ```
+<br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br/>
+
 ```sql
 SELECT 
   year,
@@ -161,7 +163,41 @@ FROM labs.taxi_ny_pub
 GROUP BY year, type
 ```
 
-<br/>![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/taxis_2013_2016.png) <br/>
+You have the ability to **Save a query** for future re-use.
+
+## Breakout - Load B2B Dataset
+
+Now that we have learned about crawlers, lets put it to use to load the rest of our [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip) dataset.
+
+- Unzip the data, and upload it to your S3 Bucket
+- Run a crawler through your bucket to discovery the dataset.
+
+#### Remember, one folder represents one table.
+
+Make sure to check fields, and how Glue is parsing your data. Correct any mistakes. Once complete, you should be able to run this query: 
+```sql
+SELECT
+  year(date_parse(Order_Date,'%c/%e/%Y')) Order_Year,
+  Company_Name,
+  SUM(quantity) Quantity,
+  SUM(sales) Total_Sales,
+  SUM(sales)/revenue_billion Sales_to_Revenue_Ratio
+FROM labs.b2b_orders o
+  JOIN labs.b2b_company co on  co.company_id = o.company_id
+  JOIN labs.b2b_customer cu on cu.customer_id = o.customer_id
+  JOIN labs.b2b_product p on p.product_id = o.product_id
+  JOIN labs.b2b_segment s on s.segment_id = o.segment_id
+  JOIN labs.b2b_ship_mode sm on sm.ship_mode_id = o.ship_mode_id
+  JOIN labs.b2b_company_financials cp on cp.company_id = co.company_id
+  JOIN labs.b2b_industry i on i.industry_id = co.industry_id
+GROUP BY
+  year(date_parse(Order_Date,'%c/%e/%Y')),
+  Company_Name,
+  revenue_billion
+ORDER BY
+  SUM(sales)/revenue_billion DESC
+LIMIT 100
+```
 
 ## Crawling Breakout - Discover Instacart Data
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
@@ -171,6 +207,7 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 ### Expected output
 ![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/instacartResults.PNG "Expected Results")
+
 
 ## Notes on best practices
 - Partition your data
