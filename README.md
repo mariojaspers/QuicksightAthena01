@@ -75,33 +75,36 @@ Insert stuff for Quicksight
 1. Open the S3 Console from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "My-First-Athena-Table"
-1. Download sample dataset [2010 Medicare Carrier Data](http://go.cms.gov/19xxPN4) and click on new folder and **Upload** the downloaded file. For your reference, here is the [data dictionary](https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/BSAPUFS/Downloads/2010_Carrier_Data_Dictionary.pdf) for this dataset.
+1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
 
 1. Open the Athena console from the Services dropdown.
-2. Create a table manually in the default database named **medicare_payments_2010**:
-
+2. Create a table manually called **orders** in the default database named **labs**:
+### Orders
 |Field Name|Data Type|
 |----------|:--------|
-|BENE_SEX_IDENT_CD|int|
-|BENE_AGE_CAT_CD|int|
-|CAR_LINE_HCPCS_CD|string|
-|CAR_LINE_ICD9_DGNS_CD|string|
-|CAR_LINE_BETOS_CD|string|
-|CAR_LINE_SRVC_CNT|string|
-|CAR_LINE_PRVDR_TYPE_CD|string|
-|CAR_LINE_CMS_TYPE_SRVC_CD|string|
-|CAR_LINE_PLACE_OF_SRVC_CD|string|
-|CAR_HCPS_PMT_AMT|string|
-|CAR_LINE_CNT|string|
+|ROW_ID|int|
+|ORDER_ID|string|
+|ORDER_DATE|date|
+|SHIP_DATE|date|
+|SHIP_MODE_ID|int|
+|CUSTOMER_ID|string|
+|SEGMENT|int|
+|PRODUCT_ID|string|
+|SALES|double|
+|COMPANY_ID|int|
+|QUANTITY|int|
+|DISCOUNT_PCT|double|
+|PROFIT_AMT|double|
+
 
 3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
 SELECT * 
-FROM default.medicare_payments_2010 LIMIT 100
+FROM labs.orders LIMIT 100
 ```
 4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
-SHOW CREATE TABLE default.medicare_payments_2010
+SHOW CREATE TABLE default.orders
 ```
 
 More resources:
