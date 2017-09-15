@@ -159,7 +159,7 @@ Instacart has published a public datasource to provide insight into consumer sho
 Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 ### Expected output
-![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
+![alt text](https://github.com/mariojaspers/QuicksightAthena01/blob/Athena-mod/images/instacartResults.PNG "Expected Results")
 
 ## Notes on best practices
 - Partition your data
