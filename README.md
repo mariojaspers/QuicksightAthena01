@@ -2,11 +2,11 @@
 Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
 
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
-- [5 min  - Sign Up for AWS ($100 Credit)](#Sign-Up-for-AWS)</br>
-- [10 min - Architecture and Permissions](#Query-a-file-on-S3)</br>
-- [20 min - Query a file on S3](./Part-3)</br>
-- [20 min - Introducing Glue and Athena](./Part-4)</br>
-- [50 min - Visualizing and Dashboarding with QuickSight](./Part-5)</br>
+- [5 min  - Sign Up for AWS ($100 Credit)](#sign-up-for-aws)</br>
+- [10 min - Architecture and Permissions](#architecture-and-permissions)</br>
+- [20 min - Query a file on S3](#query-a-file-on-s3)</br>
+- [20 min - Introducing Glue and Athena](#introduction-glue-and-athena)</br>
+- [50 min - Visualizing and Dashboarding with QuickSight](#visualizing-and-dashboarding-with-quicksight)</br>
 
 # Sign Up for AWS
 
@@ -158,7 +158,7 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 ### Expected output
 ![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/etl_select_source.png "Select raw_orders")
 
-# Visualizing and Dashboarding with Quicksight
+# Visualizing and Dashboarding with QuickSight
 
 ## Getting the data
 
