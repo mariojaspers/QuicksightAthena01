@@ -28,6 +28,7 @@ To apply credit voucher:</br>
 <br />![alt text](/images/Credit.PNG)<br/><br/>
 1. Enter the promo code provided and follow the instructions.
 <hr/></br>
+
 # Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
 <br/>
@@ -100,6 +101,7 @@ More resources:
 
 Congratulations, you queried your first S3 file through Amazon Athena!
 <hr/></br>
+
 # Introducing Glue and Athena
 One of the many benefits of Glue, is its ability to discover and profile data from S3 Objects. This become handy in quickly creating a catalog of new and incoming data.
 To get started:
@@ -152,6 +154,7 @@ GROUP BY year, type
 
 - Remember, you have the ability to **Save a query** for future re-use and reference.
 <hr/></br>
+
 # Breakout Exercises
 
 ## Breakout 1 - Load B2B Dataset
@@ -206,6 +209,7 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 
 For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/) on AWS Big Data blog.
 <hr/></br>
+
 # Visualizing and Dashboarding with QuickSight
 
 ## Getting the data
