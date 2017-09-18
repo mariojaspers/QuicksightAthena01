@@ -16,6 +16,8 @@ Navigate to [Amazon AWS Free Tier](https://aws.amazon.com/free).
 There are a variety of services that offer free tier to start building your solutions.
 
 For showing up today at this workshop, AWS will provide a $100 credit voucher towards any services you use today.
+Choose basic support plan
+
 
 ### Apply Credit to your Account
 The workshop facilitators will provide you with a credit voucher to apply to your account. This will give you plenty of credit to complete today's workshop and continue exploring AWS services.
