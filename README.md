@@ -59,11 +59,12 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
-1. Open the S3 Console from the Services drop down menu
+1. **Open the S3 Console** from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "B2B"
 1. Create another folder within B2B called "orders"
 1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
+2. Make note of the folders you saved this file under.
 
 1. Open the **Athena** console from the Services dropdown.
 2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
