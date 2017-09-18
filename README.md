@@ -31,7 +31,7 @@ To apply credit voucher:</br>
 # Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
 <br/>
-![alt text](https://www.lucidchart.com/publicSegments/view/a17a8684-4bc6-4d14-b885-4f4dc5878e7e/image.png)
+![alt text](/images/architecture.png)
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
 <hr/>
 
@@ -40,6 +40,7 @@ AWS provides a service to build resources out of predefined templates using Clou
 
 To create this we need to run a cloud formation template:
 1. Under services, click **CloudFormation** under Mangement Tools. 
+![alt text](/images/cloudFormation.png)
 2. Click **Create Stack**
 3. Under "Choose a template", select the **"Specify an Amazon S3 template URL"** radio button option and enter this template url: 
 ```
@@ -52,6 +53,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Hit **Next**
 5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
 6. We will wait a couple minutes until the progess says CREATE_COMPLETE
+![alt text](/images/cloudformationStatus.png)
 
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
