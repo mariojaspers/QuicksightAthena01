@@ -225,7 +225,20 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ## Exercise 1
 
-### Getting the data
+### Setting up your QuickSight Account
+
+Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition - the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition.  You can always upgrade you account later so it really doesnt matter.  With both editions you get one free user forever.
+
+You can name the account whatever you'd like.  You can also set the email to be your own email address.
+
+You will see some prompts about enabling access to S3 buckets, to Athena, and autodiscovery of other AWS datasources.  Check all the boxes. 
+(acct image)
+
+**Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
+
+Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
+
+### Connecting To The Data
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
