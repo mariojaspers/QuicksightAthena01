@@ -141,12 +141,13 @@ One of the many benefits of Glue, is its ability to discover and profile data fr
 To get started:
 1. In Athena, from the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](/images/CreateAutomaticTable.png)<br/>
-1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
+1. If this is your first time using Glue, you may be asked to upgrade your catalog, and get redirected. Make sure you are in the Crawlers section of Glue. On the left hand side there is a Crawlers link and hit *Add Crawler*
+1. Enter name your crawler **"Taxi Crawler"** and select the IAM role "GlueServiceRole".  Click Next.
 2. Select the **Specify path in another account** radio button and enter **s3://serverless-analytics/canonical/NY-Pub/** for the S3 path.  Click Next.
 3. Do **not** add another data source and click Next.
 4. For frequency leave as **Run on Demand** and click Next.
-5. Click **Add Database** button and give your database a name, say **labs**
-6. In order to avoid table name collision Glue generates a unique table name so we'll need to provide a prefix, say **taxis_** (include the underscore)
+5. Select our **labs** database as a target
+6. In order to avoid table name collision Glue generates a unique table name so we'll need to provide a prefix, say **taxi_** (include the underscore)
 7. Click **Next**
 8. Review the information is correct, specifically the "Include Path" field. Hit **Finish** when complete.
 8. Check the box next to your newly created crawler and click **Run Crawler**.  It should take about a minute to run and create our table.
@@ -177,13 +178,15 @@ LIMIT 10;
 
 ```sql
 SELECT 
-  year,
-  type, 
-  count(*), 
+  type,
+  year, 
+  count(*) fare_count, 
   avg(fare_amount) avg_fare, 
-  lag(fare_amount) over(partition by type order by year desc) last_year_avg_fare
-FROM labs.taxi_ny_pub
+  lag(avg(fare_amount)) over (partition by type order by year asc) last_year_avg_fare
+FROM labs.taxis_ny_pub
+WHERE year is not null
 GROUP BY year, type
+ORDER BY year DESC, type DESC
 ```
 
 - Remember, you have the ability to **Save a query** for future re-use and reference.
