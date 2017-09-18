@@ -56,6 +56,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
 ![alt text](/images/cloudformationStatus.PNG)
 <hr/></br>
+
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
 1. Open the S3 Console from the Services drop down menu
