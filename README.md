@@ -291,7 +291,6 @@ Let's repeat this last step to add two more KPI's to the top of the dashboard.  
 The second one will be a KPI for the number of unique orders YoY.  To do this, select the KPI visual type and drag 'order_id' to the 'Value' field well and 'Order Date' to the 'Trend group' field well.  Change the aggregation on 'order_id' from Count to Count Distinct:
 <br />![alt text](/images/orders_kpi.png)<br/><br/>
 
-
 For the third KPI, let's show a YoY trend of the average order size.  Click 'sales' and then use the pull down menu on the field to change the aggregation to Average.  Add the 'Order Date' to the 'Trend group' field well like we did for the first KPI:
 <br />![alt text](/images/avg_sales.png)<br/><br/>
 
@@ -335,34 +334,35 @@ Before we start visualizing, let's  add a calculated field to convert the date f
 ```python
 epochDate({pickup_datetime}/1000)
 ```
- (epoch image)
+ <br />![alt text](/images/epoch.png)<br/><br/>
 
 Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
-(direct query image)
+<br />![alt text](/images/query.png)<br/><br/>
 
 ### Creating Our Dashboard
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
 Select 'passenger_count' and then use the pull down menu to change the aggregation to Count.  Then use the pull down menu again and choose 'Format->1234.57' to round to two decimal places.  The KPI will show that we have 2.67 billion records in the dataset.  Pretty impressive performance on a dataset of that size!
-(count image)
+<br />![alt text](/images/count.png)<br/><br/>
 
 Let's add another visual.  This time select 'Pickup Date' (the calculated field you created).  You should get a line chart.  Use the pull down menu and change the aggregation to Week.  Then expand the axis range on the bottom of the visual.
-(line image)
+<br />![alt text](/images/lines_taxi.png)<br/><br/>
 
 Select the 'type' field and you should get three lines, one for each type of taxi:
-(type lines)
+<br />![alt text](/images/type_lines.png)<br/><br/>
 
 Let's add another visual.  This one will also be a time trend but we will look at the data YoY.  First change the visual type to a Line Chart.  Then drag the 'month' field to the X axis field well and the 'year' field to the Color field well.
 
 Notice the months on the bottom are out of order.  Since the field is a string data type the months are sorted in alphabetical order.  To fix this we must edit the dataset and change the data types for these columns.  Use the dropdown menu for the name of your dataset and choose 'Edit analysis data sets' and then click 'Edit' on the next screen:
-(edit image1 & 2)
+<br />![alt text](/images/edit_dataset.png)<br/><br/>
+<br />![alt text](/images/edit_dataset2.png)<br/><br/>
 
 Click on the 'a' icon underneath both of these fields in the data preview window and change them both to 'Int':
-(int image)
+<br />![alt text](/images/int.png)<br/><br/>
 
 Choose 'Save & visualize'.  Now the months on our line chart should be sorted in the correct order:
-(months correct image)
+<br />![alt text](/images/months_correct.png)<br/><br/>
 
 One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
 
