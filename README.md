@@ -232,7 +232,7 @@ Go to your AWS console and search for QuickSight.  You can choose either Standar
 You can name the account whatever you'd like.  You can also set the email to be your own email address.
 
 You will see some prompts about enabling access to S3 buckets, to Athena, and autodiscovery of other AWS datasources.  Check all the boxes. 
-(acct image)
+<br />![alt text](/images/acct_setup.png)<br/><br/>
 
 **Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
 
