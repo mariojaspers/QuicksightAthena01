@@ -334,7 +334,7 @@ Before we start visualizing, let's  add a calculated field to convert the date f
 ```python
 epochDate({pickup_datetime}/1000)
 ```
- <br />![alt text](/images/epoch.png)<br/><br/>
+![alt text](/images/epoch.png)<br/><br/>
 
 Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
 <br />![alt text](/images/query.png)<br/><br/>
@@ -344,7 +344,8 @@ Make sure we keep it set to 'Query' rather than SPICE, which is different from w
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
 Select 'passenger_count' and then use the pull down menu to change the aggregation to Count.  Then use the pull down menu again and choose 'Format->1234.57' to round to two decimal places.  The KPI will show that we have 2.67 billion records in the dataset.  Pretty impressive performance on a dataset of that size!
-<br />![alt text](/images/count.png)<br/><br/>
+<br />![alt text](/images/count.png)<br/>
+<br />![alt text](/images/count2.png)<br/><br/>
 
 Let's add another visual.  This time select 'Pickup Date' (the calculated field you created).  You should get a line chart.  Use the pull down menu and change the aggregation to Week.  Then expand the axis range on the bottom of the visual.
 <br />![alt text](/images/lines_taxi.png)<br/><br/>
