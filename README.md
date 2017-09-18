@@ -22,9 +22,9 @@ The workshop facilitators will provide you with a credit voucher to apply to you
 
 To apply credit voucher:</br>
 1. Click on your user name at the top right corner of the console
-1. Navigate to *my account* in the top right corner of the console
+1. Navigate to **My Account** in the top right corner of the console
 <br />![alt text](/images/myAccount.PNG)<br/><br/>
-1. Click on credit on the left hand side menu.
+1. Click on **Credits** on the left hand side menu.
 <br />![alt text](/images/Credit.PNG)<br/><br/>
 1. Enter the promo code provided and follow the instructions.
 <hr/></br>
