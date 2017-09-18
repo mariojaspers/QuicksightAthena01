@@ -303,6 +303,8 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 <br />![alt text](/images/date_filter.png)<br/><br/>
 <br />![alt text](/images/filter_all_visuals.png)<br/><br/>
 
+## Sharing
+
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
 <br />![alt text](/images/create_dash.png)<br/><br/>
 
