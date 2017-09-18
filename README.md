@@ -39,8 +39,8 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
 AWS provides a service to build resources out of predefined templates using CloudFormation. We will use a CloudFormation script to automate the creation of permissions, roles, and other elements we may require.
 
 To create this we need to run a cloud formation template:
-1. Under services, click **CloudFormation** under Mangement Tools. 
-![alt text](/images/cloudFormation.PNG)
+1. Under services, click **CloudFormation** under Mangement Tools. </br>
+![alt text](/images/cloudFormation.PNG)</br></br>
 2. Click **Create Stack**
 3. Under "Choose a template", select the **"Specify an Amazon S3 template URL"** radio button option and enter this template url: 
 ```
@@ -52,7 +52,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Hit **Next**
 5. Hit **Next**
 5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
-6. We will wait a couple minutes until the progess says CREATE_COMPLETE
+6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
 ![alt text](/images/cloudformationStatus.PNG)
 
 # Query a file on S3
