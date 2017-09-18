@@ -102,6 +102,33 @@ FROM labs.orders LIMIT 100
 SHOW CREATE TABLE labs.orders
 ```
 
+Alternate definitions, *schema on read*:
+```sql
+DROP TABLE labs.orders;
+CREATE EXTERNAL TABLE IF NOT EXISTS labs.orders (
+  `row_id` string,
+  `order_id` string,
+  `order_date` string,
+  `ship_date` string,
+  `ship_mode_id` string,
+  `customer_id` string,
+  `segment_id` string,
+  `product_id` string,
+  `sale` string,
+  `company_id` string,
+  `quantity` string,
+  `discount_pct` string,
+  `profit_amt` string 
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = ",",
+   "quoteChar"     = "\"",
+   "escapeChar"    = "\\"
+)  
+LOCATION "s3://marioj-bucket-02/B2B/orders/"
+TBLPROPERTIES ("skip.header.line.count"="1")
+```
 More resources:
 - [Athena Supported Formats](http://docs.aws.amazon.com/athena/latest/ug/supported-formats.html)
 - [Athena Language Reference](http://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
