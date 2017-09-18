@@ -40,7 +40,7 @@ AWS provides a service to build resources out of predefined templates using Clou
 
 To create this we need to run a cloud formation template:
 1. Under services, click **CloudFormation** under Mangement Tools. 
-![alt text](/images/cloudFormation.png)
+![alt text](/images/cloudFormation.PNG)
 2. Click **Create Stack**
 3. Under "Choose a template", select the **"Specify an Amazon S3 template URL"** radio button option and enter this template url: 
 ```
@@ -53,7 +53,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Hit **Next**
 5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
 6. We will wait a couple minutes until the progess says CREATE_COMPLETE
-![alt text](/images/cloudformationStatus.png)
+![alt text](/images/cloudformationStatus.PNG)
 
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
