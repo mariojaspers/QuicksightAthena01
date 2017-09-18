@@ -240,72 +240,77 @@ Before we start visualizing, lets also add a couple calculated fields to convert
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
 ```
-
- (image of calcs)
+ <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
 First click on 'sales' and we will get a KPI visual type.  Then click on the Field Wells on the top and use the pull down menu to choose 'Show As->Currency':
-(format image)
+<br />![alt text](/images/format_sales.png)<br/><br/>
 
 Now click on the 'Order Date' field.  Notice how our visual type automatically is changed to a line chart.  It will default to the Year level, but use the pull down menu on the Order Date field to choose 'Aggregate->Month', or you can do the same thing by clicking on the Order Date label on the x-axis:
-(month image)
+<br />![alt text](/images/month.png)<br/><br/>
 
 Next click the pull down menu on the segment field in the list of measures and choose 'Convert to dimension'.  Then find it in the list of dimensions and select it.  Now we will have 3 lines in our line chart, one per segment.  Expand the axis range on the bottom of the visual to see the whole trend:
-(image of convert field)
-(image of line chart)
+<br />![alt text](/images/convert_segment.png)<br/><br/>
+<br />![alt text](/images/line_chart.png)<br/><br/>
 
 Great, we have our first visual!  Now let's add another visual using the '+' button in the upper left and selecting 'Add visual':
-(add visual image)
+<br />![alt text](/images/add_visual.png)<br/><br/>
 
 For our next visual, let's start by clicking 'industry_name' and 'sales'.  We will get a bar chart sorted in descending order by sales:
-(industry image)
+<br />![alt text](/images/industry_chart.png)<br/><br/>
 
 Let's add a drill down capability for our end users by dragging the 'company_name' field just below the 'industry_name' field on the  Y axis.  You should see a notification that says 'Add drill-down layer':
-(drill down image)
+<br />![alt text](/images/add_drilldown.png)<br/><br/>
 
 Cool, now our end users will be able to drill down from Industry to the actual Companies in that industry.  You can see how this works by clicking on one of the bars and selecting 'Drill down to company_name':
+<br />![alt text](/images/drilldown_on_bar.png)<br/><br/>
 
 If you want to drill back up, you can either click the bars again or you can use the icons in the upper right to either drill one level back up or all the way back to the top (if you have more than one drill down built in):
+<br />![alt text](/images/drill_up.png)<br/><br/>
 
 Next let's change the visual type to a Treemap using the Visual Types selector in the bottom left:
-(treemap image)
+<br />![alt text](/images/treemap.png)<br/><br/>
 
 Now add another visual to the dashboard.  This one will be a very granular table of all the order details.  First select the 'Pivot Table' visual type.  Then click on the company_name dimension.  Expand the Field Wells on top and drag the order_id to the Rows underneath the company_name:
-(add field to pivot)
+<br />![alt text](/images/add_pivot_field.png)<br/><br/>
 
 Also click on the product_id, ship_mode, sales, profit, and quantity fields to add more detail to our visual.  It should look something like this:
-(table image)
+<br />![alt text](/images/table.png)<br/><br/>
 
 Great, our dashboard is starting to shape up.  We can now add some KPI visuals across the top to provide some high-level summary information for our users.  Add another visual and select the 'sales' field.  Expand the Field Wells and drag the Order Date to the 'Trend group' field well.  Let's also resize the visual by dragging the bottom right corner of the visual to make it smaller.  Drag it to the top of the dashboard by grabbing the dotted area on the top of the visual.  Once you have it on the top it should look like this:
-(sales kpi visual)
+<br />![alt text](/images/sales_kpi.png)<br/><br/>
 
 Let's repeat this last step to add two more KPI's to the top of the dashboard.  After you add another visual, select the KPI visual type in the lower left of the screen:
-(kpi visual tyep image)
+<br />![alt text](/images/kpi_visual_type.png)<br/><br/>
 
 The second one will be a KPI for the number of unique orders YoY.  To do this, select the KPI visual type and drag 'order_id' to the 'Value' field well and 'Order Date' to the 'Trend group' field well.  Change the aggregation on 'order_id' from Count to Count Distinct:
-(orders KPI image)
+<br />![alt text](/images/orders_kpi.png)<br/><br/>
 
 
 For the third KPI, let's show a YoY trend of the average order size.  Click 'sales' and then use the pull down menu on the field to change the aggregation to Average.  Add the 'Order Date' to the 'Trend group' field well like we did for the first KPI:
-(avg sales image)
+<br />![alt text](/images/avg_sales.png)<br/><br/>
 
 You can optionally play around with the KPI formatting options.  You can change the primary number that is displayed and the comparison type.  You can also choose if you would like to show the trend arrows as well as the progress bar (which is displayed as a bullet chart on the bottom of the KPI).
-(kpi formatting image)
+<br />![alt text](/images/kpi_formatting.png)<br/><br/>
 
 Lastly let's edit the titles of the KPI's to be more user friendly.  I chose 'Sales YoY', 'Avg Order Size YoY', and '# of Orders YoY' for my titles:
-(kpi complete image)
+<br />![alt text](/images/kpi_complete.png)<br/><br/>
 
 Awesome!  Our dashboard is looking really good.  We are almost ready to share it with the rest of our end users.  Just before we do that, let's add a filter (or many) for our users to leverage.  On the left, choose 'Filter' and then either click 'Create one' or the little filter icon on the top and choose 'Order Date'.  I like to use the 'Relative dates' type of UI for my date filters.  Set it to the 'Last 5 years' and hit 'Apply'.  Lastly click on the top where it says 'Only this visual' and change it to 'All visuals' so that it applies to the entire dashboard:
-(date filter image)
-(all visuals image)
+<br />![alt text](/images/date_filter.png)<br/><br/>
+<br />![alt text](/images/filter_all_visuals.png)<br/><br/>
 
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
-(create dash image)
+<br />![alt text](/images/create_dash.png)<br/><br/>
 
-On the next screen you will be able to share it with other users in your QuickSight account.  Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
+On the next screen you will be able to share it with other users in your QuickSight account.  
+<br />![alt text](/images/share.png)<br/><br/>
+
+Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
 
 Great job!  You have just created your first dashboard to be shared with the rest of your team!
+
 
 
 
