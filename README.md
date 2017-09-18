@@ -321,7 +321,7 @@ Great job!  You have just created your first dashboard to be shared with the res
 
 ## Exercise 2 - Visualizing NY Taxi Data
 
-One of the most compelling reasons for using Athena to query data on S3 is that you can query some really really BIG datasets.  In our next exercise we will use QuickSight and Athena to visualize 4.3 Billion records.  That's right, billion.
+One of the most compelling reasons for using Athena to query data on S3 is that you can query some really really BIG datasets.  In our next exercise we will use QuickSight and Athena to visualize 2.7 Billion records.  That's right, billion.
 
 ### Connect to the dataset
 
@@ -337,13 +337,34 @@ epochDate({pickup_datetime}/1000)
 ```
  (epoch image)
 
-Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 4 billion records, we will want to query the data directly in S3 using Athena.
+Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
 (direct query image)
 
 ### Creating Our Dashboard
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
+Select 'passenger_count' and then use the pull down menu to change the aggregation to Count.  Then use the pull down menu again and choose 'Format->1234.57' to round to two decimal places.  The KPI will show that we have 2.67 billion records in the dataset.  Pretty impressive performance on a dataset of that size!
+(count image)
+
+Let's add another visual.  This time select 'Pickup Date' (the calculated field you created).  You should get a line chart.  Use the pull down menu and change the aggregation to Week.  Then expand the axis range on the bottom of the visual.
+(line image)
+
+Select the 'type' field and you should get three lines, one for each type of taxi:
+(type lines)
+
+Let's add another visual.  This one will also be a time trend but we will look at the data YoY.  First change the visual type to a Line Chart.  Then drag the 'month' field to the X axis field well and the 'year' field to the Color field well.
+
+Notice the months on the bottom are out of order.  Since the field is a string data type the months are sorted in alphabetical order.  To fix this we must edit the dataset and change the data types for these columns.  Use the dropdown menu for the name of your dataset and choose 'Edit analysis data sets' and then click 'Edit' on the next screen:
+(edit image1 & 2)
+
+Click on the 'a' icon underneath both of these fields in the data preview window and change them both to 'Int':
+(int image)
+
+Choose 'Save & visualize'.  Now the months on our line chart should be sorted in the correct order:
+(months correct image)
+
+One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
 
 
 # The end
