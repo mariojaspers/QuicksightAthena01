@@ -333,7 +333,7 @@ Give it a name and **choose 'Create Data Source'**. Find the database you create
 
 Before we start visualizing, let's  add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
 ```python
-epockDate({pickup_datetime}/1000)
+epochDate({pickup_datetime}/1000)
 ```
  (epoch image)
 
