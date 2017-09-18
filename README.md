@@ -367,6 +367,8 @@ Choose 'Save & visualize'.  Now the months on our line chart should be sorted in
 
 One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
 
+Feel free to continue exploring this data. There arent a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go nuts with it!
+
 
 # The end
 
