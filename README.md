@@ -35,9 +35,23 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
 <hr/>
 
-## Setup IAM Permissions for AWS Glue
+## Build Permissions and S3 Bucket
+AWS provides a service to build resources out of predefined templates using CloudFormation. We will use a CloudFormation script to automate the creation of permissions, roles, and other elements we may require.
 
-#### Alternatively, you can run the [CloudFormation Template](/scripts/cf_createIAM_GlueServiceRole.json).
+To create this we need to run a cloud formation template:
+1. Under services, click **CloudFormation** under Mangement Tools. 
+2. Click **Create Stack**
+3. Select the **"Specify an Amazon S3 template URL"** option and enter this template url: 
+```
+https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_QuickSightAthena_Workshop.template
+```
+4. Click **Next**
+5. Enter the a name for your stack, like **QuicksightAthena-Workshop**
+5. Provide a unique name for your bucket to store your data - **It needs to be globally unique name and the bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-). No spaces!**
+5. Hit **Next**
+5. Hit **Next**
+5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
+6. We will wait a couple minutes until the progess says COMPLETE
 
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
