@@ -225,19 +225,22 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ## Getting the data
 
-Open QuickSight and choose 'Manage Data' in the upper right hand corner.
+Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
-Choose 'New Dataset' and then select Athena.
+**Choose 'New Dataset'** and then select **Athena**.
 
-Give it a name and choose 'Create Data Source'. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  Choose 'Edit/Preview Data'.
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  Choose 'Edit/Preview Data'.
 
 Now we will join all the tables we had created in Athena by using the Glue data crawler.  Some tables join directly to the Orders table and some join to the Company table.  To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
-(image of joins)
+![alt text](/images/b2b%20joins.png)
 
 Before we start visualizing, lets also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the sting field to a date field.  Use these formulas for each calculated field:
+```python
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
+```
+
  (image of calcs)
  
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
