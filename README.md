@@ -232,9 +232,9 @@ LIMIT 100
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
 Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
 
-Source s3 bucket: **s3://royon-customer-public/instacart/**
-Database: labs
-Prefix: instacart_
+- Source s3 bucket: **s3://royon-customer-public/instacart/**
+- Database: **labs**
+- Prefix: **instacart_**
 ### Expected output
 ![alt text](/images/instacartResults.PNG "Expected Results")
 
