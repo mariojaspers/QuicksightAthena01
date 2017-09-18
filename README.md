@@ -237,7 +237,7 @@ Now we will join all the tables we had created in Athena by using the Glue data 
 
 ![alt text](/images/b2b%20joins.png)
 
-Before we start visualizing, lets also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the sting field to a date field.  Use these formulas for each calculated field:
+Before we start visualizing, let's also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the string field to a date field.  Use these formulas for each calculated field:
 ```python
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
@@ -319,10 +319,32 @@ Great job!  You have just created your first dashboard to be shared with the res
 <br />![alt text](/images/dash.png)<br/><br/>
 
 
+## Exercise 2 - Visualizing NY Taxi Data
 
-## SPICE 
+One of the most compelling reasons for using Athena to query data on S3 is that you can query some really really BIG datasets.  In our next exercise we will use QuickSight and Athena to visualize 4.3 Billion records.  That's right, billion.
 
-blablabal 
+### Connect to the dataset
 
-### the end
+Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
+
+**Choose 'New Dataset'** and then select **Athena**.
+
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the NY taxi data and select the appropriate table.  **Choose 'Edit/Preview Data'**.
+
+Before we start visualizing, let's  add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
+```python
+epockDate({pickup_datetime}/1000)
+```
+ (epoch image)
+
+Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 4 billion records, we will want to query the data directly in S3 using Athena.
+(direct query image)
+
+### Creating Our Dashboard
+
+Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
+
+
+
+# The end
 
