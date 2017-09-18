@@ -22,65 +22,56 @@ The workshop facilitators will provide you with a credit voucher to apply to you
 
 To apply credit voucher:</br>
 1. Click on your user name at the top right corner of the console
-1. Navigate to *my account* in the top right corner of the console
+1. Navigate to **My Account** in the top right corner of the console
 <br />![alt text](/images/myAccount.PNG)<br/><br/>
-1. Click on credit on the left hand side menu.
+1. Click on **Credits** on the left hand side menu.
 <br />![alt text](/images/Credit.PNG)<br/><br/>
 1. Enter the promo code provided and follow the instructions.
+<hr/></br>
 
 # Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
 <br/>
-![alt text](https://www.lucidchart.com/publicSegments/view/a17a8684-4bc6-4d14-b885-4f4dc5878e7e/image.png)
+![alt text](/images/architecture.png)
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
-<hr/>
 
-## Setup IAM Permissions for AWS Glue
 
-#### Alternatively, you can run the [CloudFormation Template](/scripts/cf_createIAM_GlueServiceRole.json).
+## Build Permissions and S3 Bucket
+AWS provides a service to build resources out of predefined templates using CloudFormation. We will use a CloudFormation script to automate the creation of permissions, roles, and other elements we may require.
 
-1. Access the IAM console and select **Users**.  Then select your username
-2. Click **Add Permissions** button
-3. From the list of managed policies, attach the following:
-  - AWSGlueConsoleFullAccess
-  - CloudWatchLogsReadOnlyAccess
-  - AWSCloudFormationReadOnlyAccess
-
-### Setup AWS Glue default service role
-
-1. From the IAM console click **Roles** and create a new role
-2. Name it **AWSGlueServiceRole**.  If you choose a different name you will need to manually create a new policy.
-3. Select the **AWS Glue Service Role** from the **AWS Service Role** list
-<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/glue_role_type.png)<br/>
-1. From the list of managed policies, attach the following:
-  - AWSGlueServiceRole
-  - AWSGlueServiceNotebookRole
-  - AmazonS3FullAccess
-
-## Create S3 Bucket for our data
-1. Open the S3 Console from the Services drop down menu
-<br />![alt text](/images/s301.PNG)<br/>
-2. Click on **Create Bucket**
-<br />![alt text](/images/s302.PNG)<br/>
-2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
-<br />![alt text](/images/s303.PNG)<br/>
-2. Your bucket is ready for use.
-
-</hr>
-
-</br>
+To create this we need to run a cloud formation template:
+1. Under services, click **CloudFormation** under Mangement Tools. </br>
+![alt text](/images/cloudFormation.PNG)</br></br>
+2. Click **Create Stack**
+3. Under "Choose a template", select the **"Specify an Amazon S3 template URL"** radio button option and enter this template url: 
+```
+https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_QuickSightAthena_Workshop.template
+```
+4. Click **Next**
+5. Enter the a name for your stack, like **QuicksightAthena-Workshop**
+5. Provide a unique name for your bucket to store your data - **It needs to be globally unique name and the bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-). No spaces!**
+5. Hit **Next**
+5. Hit **Next**
+5. There is an acknowledge checkbox for you to review, and hit **Create**
+6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
+![alt text](/images/cloudformationStatus.PNG)
+<hr/></br>
 
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
-1. Open the S3 Console from the Services drop down menu
+1. **Open the S3 Console** from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "B2B"
 1. Create another folder within B2B called "orders"
 1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
+2. Make note of the folders you saved this file under.
 
 1. Open the **Athena** console from the Services dropdown.
 2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
 <br/>![alt text](/images/CreateManualTable.png)</br>
+3. Enter the folder location of your dataset. s3://<your bucket name>/B2B/orders/
+4. Select CSV as the format of your file.
+5. Start defining the structure of your table:
 ### Orders Schema
 |Field Name|Data Type|
 |----------|:--------|
@@ -98,6 +89,8 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 |DISCOUNT_PCT|double|
 |PROFIT_AMT|double|
 
+6. Hit **Next**
+7. Hit **Create Table**
 
 3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
@@ -106,26 +99,55 @@ FROM labs.orders LIMIT 100
 ```
 4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
-SHOW CREATE TABLE default.orders
+SHOW CREATE TABLE labs.orders
 ```
 
+Alternate definitions, *schema on read*:
+```sql
+DROP TABLE labs.orders;
+CREATE EXTERNAL TABLE IF NOT EXISTS labs.orders (
+  `row_id` string,
+  `order_id` string,
+  `order_date` string,
+  `ship_date` string,
+  `ship_mode_id` string,
+  `customer_id` string,
+  `segment_id` string,
+  `product_id` string,
+  `sale` string,
+  `company_id` string,
+  `quantity` string,
+  `discount_pct` string,
+  `profit_amt` string 
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = ",",
+   "quoteChar"     = "\"",
+   "escapeChar"    = "\\"
+)  
+LOCATION "s3://marioj-bucket-02/B2B/orders/"
+TBLPROPERTIES ("skip.header.line.count"="1")
+```
 More resources:
 - [Athena Supported Formats](http://docs.aws.amazon.com/athena/latest/ug/supported-formats.html)
 - [Athena Language Reference](http://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
 
 Congratulations, you queried your first S3 file through Amazon Athena!
+<hr/></br>
 
 # Introducing Glue and Athena
 One of the many benefits of Glue, is its ability to discover and profile data from S3 Objects. This become handy in quickly creating a catalog of new and incoming data.
 To get started:
 1. In Athena, from the **Database** pane on the left hand side, click **Create Table** drop down and select **Automatically**
 <br />![alt text](/images/CreateAutomaticTable.png)<br/>
-1. Enter a name for the crawler and select the IAM role we created in the previous section.  Click Next.
+1. If this is your first time using Glue, you may be asked to upgrade your catalog, and get redirected. Make sure you are in the Crawlers section of Glue. On the left hand side there is a Crawlers link and hit *Add Crawler*
+1. Enter name your crawler **"Taxi Crawler"** and select the IAM role "GlueServiceRole".  Click Next.
 2. Select the **Specify path in another account** radio button and enter **s3://serverless-analytics/canonical/NY-Pub/** for the S3 path.  Click Next.
 3. Do **not** add another data source and click Next.
 4. For frequency leave as **Run on Demand** and click Next.
-5. Click **Add Database** button and give your database a name, say **labs**
-6. In order to avoid table name collision Glue generates a unique table name so we'll need to provide a prefix, say **taxis_** (include the underscore)
+5. Select our **labs** database as a target
+6. In order to avoid table name collision Glue generates a unique table name so we'll need to provide a prefix, say **taxi_** (include the underscore)
 7. Click **Next**
 8. Review the information is correct, specifically the "Include Path" field. Hit **Finish** when complete.
 8. Check the box next to your newly created crawler and click **Run Crawler**.  It should take about a minute to run and create our table.
@@ -156,16 +178,19 @@ LIMIT 10;
 
 ```sql
 SELECT 
-  year,
-  type, 
-  count(*), 
+  type,
+  year, 
+  count(*) fare_count, 
   avg(fare_amount) avg_fare, 
-  lag(fare_amount) over(partition by type order by year desc) last_year_avg_fare
+  lag(avg(fare_amount)) over (partition by type order by year asc) last_year_avg_fare
 FROM labs.taxi_ny_pub
+WHERE year is not null
 GROUP BY year, type
+ORDER BY year DESC, type DESC
 ```
 
 - Remember, you have the ability to **Save a query** for future re-use and reference.
+<hr/></br>
 
 # Breakout Exercises
 
@@ -207,8 +232,9 @@ LIMIT 100
 In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
 Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
 
-Source s3 bucket: **s3://royon-customer-public/instacart/**
-
+- Source s3 bucket: **s3://royon-customer-public/instacart/**
+- Database: **labs**
+- Prefix: **instacart_**
 ### Expected output
 ![alt text](/images/instacartResults.PNG "Expected Results")
 
@@ -220,6 +246,7 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 - Convert data to a columnar format, with large datasets. 
 
 For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/) on AWS Big Data blog.
+<hr/></br>
 
 # Visualizing and Dashboarding with QuickSight
 
@@ -310,13 +337,3 @@ On the next screen you will be able to share it with other users in your QuickSi
 Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
 
 Great job!  You have just created your first dashboard to be shared with the rest of your team!
-
-
-
-
-## SPICE 
-
-blablabal 
-
-### the end
-
