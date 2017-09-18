@@ -183,7 +183,7 @@ SELECT
   count(*) fare_count, 
   avg(fare_amount) avg_fare, 
   lag(avg(fare_amount)) over (partition by type order by year asc) last_year_avg_fare
-FROM labs.taxis_ny_pub
+FROM labs.taxi_ny_pub
 WHERE year is not null
 GROUP BY year, type
 ORDER BY year DESC, type DESC
@@ -233,7 +233,8 @@ In this section, we will break out and follow the same instructions, but while l
 Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
 
 Source s3 bucket: **s3://royon-customer-public/instacart/**
-
+Database: labs
+Prefix: instacart_
 ### Expected output
 ![alt text](/images/instacartResults.PNG "Expected Results")
 
