@@ -223,7 +223,9 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 # Visualizing and Dashboarding with QuickSight
 
-## Getting the data
+## Exercise 1
+
+### Getting the data
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
@@ -242,7 +244,7 @@ parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
-## Creating Our Dashboard
+### Creating Our Dashboard
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
@@ -303,7 +305,7 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 <br />![alt text](/images/date_filter.png)<br/><br/>
 <br />![alt text](/images/filter_all_visuals.png)<br/><br/>
 
-## Sharing
+### Sharing
 
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
 <br />![alt text](/images/create_dash.png)<br/><br/>
