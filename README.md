@@ -52,7 +52,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Provide a unique name for your bucket to store your data - **It needs to be globally unique name and the bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-). No spaces!**
 5. Hit **Next**
 5. Hit **Next**
-5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
+5. There is an acknowledge checkbox for you to review, and hit **Create**
 6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
 ![alt text](/images/cloudformationStatus.PNG)
 <hr/></br>
