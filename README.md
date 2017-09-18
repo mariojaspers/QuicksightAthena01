@@ -39,37 +39,6 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
 
 #### Alternatively, you can run the [CloudFormation Template](/scripts/cf_createIAM_GlueServiceRole.json).
 
-1. Access the IAM console and select **Users**.  Then select your username
-2. Click **Add Permissions** button
-3. From the list of managed policies, attach the following:
-  - AWSGlueConsoleFullAccess
-  - CloudWatchLogsReadOnlyAccess
-  - AWSCloudFormationReadOnlyAccess
-
-### Setup AWS Glue default service role
-
-1. From the IAM console click **Roles** and create a new role
-2. Name it **AWSGlueServiceRole**.  If you choose a different name you will need to manually create a new policy.
-3. Select the **AWS Glue Service Role** from the **AWS Service Role** list
-<br />![alt text](http://amazonathenahandson.s3-website-us-east-1.amazonaws.com/images/glue_role_type.png)<br/>
-1. From the list of managed policies, attach the following:
-  - AWSGlueServiceRole
-  - AWSGlueServiceNotebookRole
-  - AmazonS3FullAccess
-
-## Create S3 Bucket for our data
-1. Open the S3 Console from the Services drop down menu
-<br />![alt text](/images/s301.PNG)<br/>
-2. Click on **Create Bucket**
-<br />![alt text](/images/s302.PNG)<br/>
-2. Choose name for your bucket. Your bucket name needs to be globally unique and DNS compliant. 
-<br />![alt text](/images/s303.PNG)<br/>
-2. Your bucket is ready for use.
-
-</hr>
-
-</br>
-
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
 1. Open the S3 Console from the Services drop down menu
