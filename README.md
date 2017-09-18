@@ -229,7 +229,7 @@ Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
 **Choose 'New Dataset'** and then select **Athena**.
 
-Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  Choose 'Edit/Preview Data'.
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  **Choose 'Edit/Preview Data'**.
 
 Now we will join all the tables we had created in Athena by using the Glue data crawler.  Some tables join directly to the Orders table and some join to the Company table.  To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
@@ -242,6 +242,8 @@ parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
+## Creating Our Dashboard
+
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
 First click on 'sales' and we will get a KPI visual type.  Then click on the Field Wells on the top and use the pull down menu to choose 'Show As->Currency':
@@ -310,7 +312,7 @@ On the next screen you will be able to share it with other users in your QuickSi
 Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
 
 Great job!  You have just created your first dashboard to be shared with the rest of your team!
-
+<br />![alt text](/images/dash.png)<br/><br/>
 
 
 
