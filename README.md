@@ -27,13 +27,13 @@ To apply credit voucher:</br>
 1. Click on credit on the left hand side menu.
 <br />![alt text](/images/Credit.PNG)<br/><br/>
 1. Enter the promo code provided and follow the instructions.
-
+<hr/></br>
 # Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
 <br/>
 ![alt text](/images/architecture.png)
 <br/> To get these services working we need to allow these services to talk to one another. Following we will set up permissions for to accomplish this through AWS IAM.
-<hr/>
+
 
 ## Build Permissions and S3 Bucket
 AWS provides a service to build resources out of predefined templates using CloudFormation. We will use a CloudFormation script to automate the creation of permissions, roles, and other elements we may require.
@@ -54,7 +54,7 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Acknowledge that Cloudformation will create resources for you, and hit **Create**
 6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
 ![alt text](/images/cloudformationStatus.PNG)
-
+<hr/></br>
 # Query a file on S3
 To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
 1. Open the S3 Console from the Services drop down menu
@@ -99,7 +99,7 @@ More resources:
 - [Athena Language Reference](http://docs.aws.amazon.com/athena/latest/ug/language-reference.html)
 
 Congratulations, you queried your first S3 file through Amazon Athena!
-
+<hr/></br>
 # Introducing Glue and Athena
 One of the many benefits of Glue, is its ability to discover and profile data from S3 Objects. This become handy in quickly creating a catalog of new and incoming data.
 To get started:
@@ -151,7 +151,7 @@ GROUP BY year, type
 ```
 
 - Remember, you have the ability to **Save a query** for future re-use and reference.
-
+<hr/></br>
 # Breakout Exercises
 
 ## Breakout 1 - Load B2B Dataset
@@ -205,7 +205,7 @@ Source s3 bucket: **s3://royon-customer-public/instacart/**
 - Convert data to a columnar format, with large datasets. 
 
 For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/) on AWS Big Data blog.
-
+<hr/></br>
 # Visualizing and Dashboarding with QuickSight
 
 ## Getting the data
