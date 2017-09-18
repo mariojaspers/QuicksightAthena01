@@ -69,6 +69,9 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 1. Open the **Athena** console from the Services dropdown.
 2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
 <br/>![alt text](/images/CreateManualTable.png)</br>
+3. Enter the folder location of your dataset. s3://<your bucket name>/B2B/orders/
+4. Select CSV as the format of your file.
+5. Start defining the structure of your table:
 ### Orders Schema
 |Field Name|Data Type|
 |----------|:--------|
@@ -86,6 +89,8 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 |DISCOUNT_PCT|double|
 |PROFIT_AMT|double|
 
+6. Hit **Next**
+7. Hit **Create Table**
 
 3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
