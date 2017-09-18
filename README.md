@@ -240,7 +240,6 @@ Before we start visualizing, lets also add a couple calculated fields to convert
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
 ```
-
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
@@ -311,6 +310,7 @@ On the next screen you will be able to share it with other users in your QuickSi
 Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
 
 Great job!  You have just created your first dashboard to be shared with the rest of your team!
+
 
 
 
