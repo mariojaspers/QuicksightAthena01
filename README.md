@@ -91,7 +91,7 @@ FROM labs.orders LIMIT 100
 ```
 4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
-SHOW CREATE TABLE default.orders
+SHOW CREATE TABLE labs.orders
 ```
 
 More resources:
