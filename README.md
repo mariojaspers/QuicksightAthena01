@@ -12,7 +12,7 @@ Hands on workshop is broken up into 5 different sections to get you familar with
 # Sign Up for AWS
 
 ### Create your AWS Account
-Navigate to [Amazon AWS Free Tier](aws.amazon.com/free).
+Navigate to [Amazon AWS Free Tier](https://aws.amazon.com/free).
 There are a variety of services that offer free tier to start building your solutions.
 
 For showing up today at this workshop, AWS will provide a $100 credit voucher towards any services you use today.
