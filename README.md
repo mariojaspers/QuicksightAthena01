@@ -49,14 +49,13 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 To get started with Athena and QuickSight, we need to provide data to query. This data may originate from a variety of sources into S3, but for this example we will upload a file into S3 manually.
 1. **Open the S3 Console** from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
-1. Hit **Create folder** and name it "B2B"
-1. Create another folder within B2B called "orders"
-1. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
-2. Make note of the folders you saved this file under.
-
-1. Open the **Athena** console from the Services dropdown.
-2. Create a table manually via DDL in the query window.
-3. Replace the location value to the folder location of your dataset. s3://**your bucket name**/B2B/orders/
+3. Hit **Create folder** and name it "B2B"
+4. Create another folder within B2B called "orders"
+5. Download sample dataset [B2B Orders](https://slalom-seattle-ima.s3-us-west-2.amazonaws.com/docs/B2B%20Dataset.zip). Unzip the dataset files into a folder. Click on new folder and **Upload** the **orders.csv**.
+6. Make note of the folders you saved this file under.
+7. Open the **Athena** console from the Services dropdown.
+8. Create a table manually via DDL in the query window.
+9. Replace the location value to the folder location of your dataset. s3://**your bucket name**/B2B/orders/
 ```sql
 CREATE DATABASE labs
 ```
@@ -83,14 +82,14 @@ WITH SERDEPROPERTIES (
 ) LOCATION 's3://<your bucket here>/B2B/orders/'
 TBLPROPERTIES ('has_encrypted_data'='false')
 ```
-6. Hit **Run Query**
+10. Hit **Run Query**
 
-7. Run the following SQL statement and make sure that your table is reading correctly:
+11. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
 SELECT * 
 FROM labs.orders LIMIT 100
 ```
-8. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
+12. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
 SHOW CREATE TABLE labs.orders
 ```
