@@ -248,7 +248,7 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 ### Setting up your QuickSight Account
 
 Go to your AWS console and search for QuickSight.  You will first be presented with a screen to sign up:
-(signup)
+ <br />![alt text](/images/signup.png)<br/><br/>
 
 You can choose either Standard or Enterprise Edition (the main difference today is that Enterprise edition can hook up to Active Directory, though there will be more funtionality in the future added to Enterprise Edition).  For purposes of our lab today Standard Edition is fine.  With both editions you get one free user, forever.
 (editions)
