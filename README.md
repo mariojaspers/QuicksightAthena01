@@ -55,8 +55,7 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 2. Make note of the folders you saved this file under.
 
 1. Open the **Athena** console from the Services dropdown.
-2. Create a table manually via DDL:
-<br/>![alt text](/images/CreateManualTable.png)</br>
+2. Create a table manually via DDL in the query window.
 3. Replace the location value to the folder location of your dataset. s3://<your bucket name>/B2B/orders/
 ```sql 
 CREATE EXTERNAL TABLE IF NOT EXISTS labs.orders (
