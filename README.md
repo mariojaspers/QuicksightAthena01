@@ -13,23 +13,8 @@ Hands on workshop is broken up into 5 different sections to get you familar with
 
 ### Create your AWS Account
 Navigate to [Amazon AWS Free Tier](https://aws.amazon.com/free).
-There are a variety of services that offer free tier to start building your solutions.
+There are a variety of services that offer free tier to start building your solutions. Choose basic support plan.
 
-For showing up today at this workshop, AWS will provide a $100 credit voucher towards any services you use today.
-Choose basic support plan
-
-
-### Apply Credit to your Account
-The workshop facilitators will provide you with a credit voucher to apply to your account. This will give you plenty of credit to complete today's workshop and continue exploring AWS services.
-
-To apply credit voucher:</br>
-1. Click on your user name at the top right corner of the console
-1. Navigate to **My Account** in the top right corner of the console
-<br />![alt text](/images/myAccount.PNG)<br/><br/>
-1. Click on **Credits** on the left hand side menu.
-<br />![alt text](/images/Credit.PNG)<br/><br/>
-1. Enter the promo code provided and follow the instructions.
-<hr/></br>
 
 # Architecture and Permissions
 Purpose of serverless components is to reduce the overhead of maintaining, provisioning, and managing servers to serve applications. AWS provides three compelling serverless services through AWS to store large amounts of data, manipulate data at scale, query data at scale and speed, and easily visualize it - namely **AWS Glue, Amazon Athena, Amazon QuickSight.**
@@ -42,6 +27,7 @@ Purpose of serverless components is to reduce the overhead of maintaining, provi
 AWS provides a service to build resources out of predefined templates using CloudFormation. We will use a CloudFormation script to automate the creation of permissions, roles, and other elements we may require.
 
 To create this we need to run a cloud formation template:
+1. Make sure you are in the N. Virginia Region
 1. Under services, click **CloudFormation** under Mangement Tools. </br>
 ![alt text](/images/cloudFormation.PNG)</br></br>
 2. Click **Create Stack**
