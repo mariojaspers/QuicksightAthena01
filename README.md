@@ -271,16 +271,18 @@ Here is some documentation on getting familiar with the UI:  [Navigating the UI]
 Documentation:  [Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html), [Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner:
- <br />![alt text](/images/manage_data.png)<br/><br/>
+ <br />![alt text](/images/manage_data.png)<br/>
 
 **Choose 'New Dataset'** and then select **Athena**.
- <br />![alt text](/images/new_dataset.png)<br/><br/>
- <br />![alt text](/images/athena.png)<br/><br/>
+ <br />![alt text](/images/new_dataset.png)<br/>
+ <br />![alt text](/images/athena.png)<br/>
 
 Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table. Try to make sure you are choosing the orders table that was created automatically by Glue instead of the table that we created using the SQL statement (if you happen to pick the wrong one, no problem, you just won't need to do the step where we create a calculated field to change the order_date to a date field).  **Choose 'Edit/Preview Data'**.  (If you clicked 'Select' instead, it's OK, just choose 'Edit/Preview Data' on the next screen and leave it on 'Import to SPICE for quicker analytics'.)
  <br />![alt text](/images/athena_tables.png)<br/><br/>
 
 Now we will join all the tables we had created in Athena by using the Glue data crawler. Some tables join directly to the Orders table and some join to the Company table. To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - to do this, click on the little venn diagrams in-between the tables you see on the screen.  They will all be based on the key which is named after the dimension table you are trying to join.  Set them all to 'Inner' joins and click 'Apply' after you finish each table.
+![alt text](/images/joins1.png)
+![alt text](/images/joins2.png)
 
 When you are finished it should look something like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
