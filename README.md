@@ -56,7 +56,7 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 
 1. Open the **Athena** console from the Services dropdown.
 2. Create a table manually via DDL in the query window.
-3. Replace the location value to the folder location of your dataset. s3://<your bucket name>/B2B/orders/
+3. Replace the location value to the folder location of your dataset. s3://**your bucket name**/B2B/orders/
 ```sql 
 CREATE EXTERNAL TABLE IF NOT EXISTS labs.orders (
   `row_id` int,
@@ -77,7 +77,7 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
 WITH SERDEPROPERTIES (
   'serialization.format' = ',',
   'field.delim' = ','
-) LOCATION 's3://marioj-bucket-02/B2B/orders/'
+) LOCATION 's3://<your bucket here>/B2B/orders/'
 TBLPROPERTIES ('has_encrypted_data'='false')
 ```
 6. Hit **Run Query**
