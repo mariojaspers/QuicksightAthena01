@@ -247,43 +247,52 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ### Setting up your QuickSight Account
 
-Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition (the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition).  You can always upgrade you account later so it doesn't matter all that much for purposes of our lab today.  
+Go to your AWS console and search for QuickSight.  You will first be presented with a screen to sign up:
+(signup)
 
-With both editions you get one free user, forever.
+You can choose either Standard or Enterprise Edition (the main difference today is that Enterprise edition can hook up to Active Directory, though there will be more funtionality in the future added to Enterprise Edition).  For purposes of our lab today Standard Edition is fine.  With both editions you get one free user, forever.
+(editions)
 
-You can name the account whatever you'd like.  You can also set the email to be your own email address.
-
-You will see some prompts about enabling access to S3 buckets, to Athena, and autodiscovery of other AWS datasources.  Check all the boxes. 
-<br />![alt text](/images/acct_setup.png)<br/><br/>
+Next you will create and name for you account (you can name the account whatever you'd like) and a notification email address (set it to be your own email address). You will also see some prompts about enabling autodiscovery of your data in AWS sourcess, as well as access to Athena, S3 buckets, and S3 Storage analytics.  Check all the boxes. 
+<br />![alt text](/images/singup_options.png)<br/><br/>
 
 **Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
+(singup_region)
 
-Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
+Once you are finished your account will load with some sample datasets and dashboards.  
+(singup_complete)
 
-Here is some documenatation on getting familiar with the UI:  [Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
+Alright, now we are ready to roll!
+
+Here is some documentation on getting familiar with the UI:  [Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
 
 ### Connecting To The Data
 
 Documentation:  [Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html), [Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
 
-Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
+Open QuickSight and **choose 'Manage Data'** in the upper right hand corner:
+(manage_data)
 
 **Choose 'New Dataset'** and then select **Athena**.
+(new_dataset)
+(athena)
 
-Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  **Choose 'Edit/Preview Data'**.
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table. Try to make sure you are choosing the orders table that was created automatically by Glue instead of the table that we created using the SQL statement (if you happen to pick the wrong one, no problem, you just won't need to do the step where we create a calculated field to change the order_date to a date field).  **Choose 'Edit/Preview Data'**.  If you clicked 'Select' instead, it's OK, just choose 'Edit/Preview Data' on the next screen and leave it on 'Import to SPICE for quicker analytics'.
+(athena_tables)
 
-Now we will join all the tables we had created in Athena by using the Glue data crawler.  Some tables join directly to the Orders table and some join to the Company table.  To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
+Now we will join all the tables we had created in Athena by using the Glue data crawler.  Please refer to the documentation on the top of this section. Some tables join directly to the Orders table and some join to the Company table. To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
 ![alt text](/images/b2b%20joins.png)
 
-Before we start visualizing, let's also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the string field to a date field.  Use these formulas for each calculated field:
+Before we start visualizing, let's also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will be supported soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the string field to a date field.  Use these formulas for each calculated field:
 ```python
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
- Once you are finished preprating the dataset, **choose Save & Visualize** on the top of your screen.
+Once you are finished preprating the dataset, **choose Save & Visualize** on the top of your screen.
+(save_visualize)
  
 ### Creating Our Dashboard
 
