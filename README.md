@@ -256,7 +256,9 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ### Setting up your QuickSight Account
 
-Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition - the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition.  You can always upgrade you account later so it really doesnt matter.  With both editions you get one free user forever.
+Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition (the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition).  You can always upgrade you account later so it doesn't matter all that much for purposes of our lab today.  
+
+With both editions you get one free user, forever.
 
 You can name the account whatever you'd like.  You can also set the email to be your own email address.
 
@@ -267,7 +269,11 @@ You will see some prompts about enabling access to S3 buckets, to Athena, and au
 
 Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
 
+Here is some documenatation on getting familiar with the UI:  [Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
+
 ### Connecting To The Data
+
+Documentation:  [Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html), [Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
@@ -286,7 +292,11 @@ parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
+ Once you are finished preprating the dataset, **choose Save & Visualize** on the top of your screen.
+ 
 ### Creating Our Dashboard
+
+Documentation:  [Creating Your First Analysis](http://docs.aws.amazon.com/quicksight/latest/user/example-create-an-analysis.html), [Modifying Visuals](http://docs.aws.amazon.com/quicksight/latest/user/example-modify-visuals.html)
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
@@ -348,6 +358,8 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 
 ### Sharing
 
+Documentation:  [Creating and Sharing Your First Dashboard](http://docs.aws.amazon.com/quicksight/latest/user/creating-a-dashboard.html)
+
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
 <br />![alt text](/images/create_dash.png)<br/><br/>
 
@@ -373,13 +385,13 @@ Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
 Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the NY taxi data and select the appropriate table.  **Choose 'Edit/Preview Data'**.
 
-Before we start visualizing, let's  add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
+Before we start visualizing, let's add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
 ```python
 epochDate({pickup_datetime}/1000)
 ```
 ![alt text](/images/epoch.png)<br/><br/>
 
-Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
+Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are going to be working with nearly 3 billion records, we will want to query the data directly in S3 using Athena.
 <br />![alt text](/images/query.png)<br/><br/>
 
 ### Creating Our Dashboard
@@ -410,7 +422,12 @@ Choose 'Save & visualize'.  Now the months on our line chart should be sorted in
 
 One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
 
-Feel free to continue exploring this data. There arent a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go nuts with it!
+Feel free to continue exploring this data. There aren't a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go wild with it!
 
+One thing you could try is how to [Create a Story](http://docs.aws.amazon.com/quicksight/latest/user/working-with-stories.html).  For instance you could capture a scene of the YoY trend visual, then filter to 2010 and capture another scene to highlight the drop in Feb 2010 due to the blizzard.
+
+Congratulations on creating your first Glue Crawlers, Athena Databases & Tables, and QuickSight Analyses and Dashboards!  You are now well versed in Serverless Analytics!
+
+For more tips and information about what's new in QuickSight, check out the [blog](https://quicksight.aws/resources/blog/) as well as the other [resources](https://quicksight.aws/resources/) on the website!
 
 # The end
