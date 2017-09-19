@@ -2,7 +2,7 @@
 Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
 
 Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
-- [5 min  - Sign Up for AWS ($100 Credit)](#sign-up-for-aws)</br>
+- [5 min  - Sign Up for AWS](#sign-up-for-aws)</br>
 - [10 min - Architecture and Permissions](#architecture-and-permissions)</br>
 - [10 min - Query a file on S3](#query-a-file-on-s3)</br>
 - [10 min - Introducing Glue & Athena](#introduction-glue-and-athena)</br>
