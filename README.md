@@ -55,30 +55,33 @@ To get started with Athena and QuickSight, we need to provide data to query. Thi
 2. Make note of the folders you saved this file under.
 
 1. Open the **Athena** console from the Services dropdown.
-2. Create a table manually called **orders** in the a database named **labs** through Athena's utility:
+2. Create a table manually via DDL:
 <br/>![alt text](/images/CreateManualTable.png)</br>
-3. Enter the folder location of your dataset. s3://<your bucket name>/B2B/orders/
-4. Select CSV as the format of your file.
-5. Start defining the structure of your table:
-### Orders Schema
-|Field Name|Data Type|
-|----------|:--------|
-|ROW_ID|int|
-|ORDER_ID|string|
-|ORDER_DATE|date|
-|SHIP_DATE|date|
-|SHIP_MODE_ID|int|
-|CUSTOMER_ID|string|
-|SEGMENT|int|
-|PRODUCT_ID|string|
-|SALES|double|
-|COMPANY_ID|int|
-|QUANTITY|int|
-|DISCOUNT_PCT|double|
-|PROFIT_AMT|double|
-
-6. Hit **Next**
-7. Hit **Create Table**
+3. Replace the location value to the folder location of your dataset. s3://<your bucket name>/B2B/orders/
+```sql 
+CREATE EXTERNAL TABLE IF NOT EXISTS labs.orders (
+  `row_id` int,
+  `order_id` string,
+  `order_date` date,
+  `ship_date` date,
+  `ship_mode_id` int,
+  `customer_id` string,
+  `segment` int,
+  `product_id` string,
+  `sales` double,
+  `company_id` int,
+  `quantity` int,
+  `discount_pct` double,
+  `profit_amt` double 
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+  'serialization.format' = ',',
+  'field.delim' = ','
+) LOCATION 's3://marioj-bucket-02/B2B/orders/'
+TBLPROPERTIES ('has_encrypted_data'='false')
+```
+6. Hit **Run Query**
 
 3. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
