@@ -1,7 +1,7 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters" : {
-        "BucketName" : {
+        "WorkshopBucketName" : {
           "Type" : "String",
           "Default" : "",
           "Description" : "Enter a globally unique name for a bucket to store your data into. The bucket name must contain only lowercase letters, numbers, periods (.), and dashes (-). "
@@ -35,7 +35,9 @@
       },
       "S3Bucket":{
           "Type":"AWS::S3::Bucket",
-          "BucketName":{"Ref":"BucketName"}
+          "Properties": {
+          "BucketName":{"Ref":"WorkshopBucketName"}
+          }
       }
     }
 }
