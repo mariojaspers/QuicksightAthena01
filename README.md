@@ -244,7 +244,7 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ## Exercise 1
 
-### Setting up your QuickSight Account
+### 1. Setting up your QuickSight Account
 
 Go to your AWS console and search for QuickSight.  You will first be presented with a screen to sign up:
  <br />![alt text](/images/signup.png)<br/>
@@ -265,7 +265,7 @@ Alright, now we are ready to roll!
 
 Here is some documentation on getting familiar with the UI:  [Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
 
-### Connecting To The Data
+### 2. Connecting to the Data
 
 Documentation:  [Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html), [Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
 
@@ -297,7 +297,7 @@ parseDate({ship_date},'MM/dd/yyyy')
 Once you are finished preparing the dataset, **choose Save & Visualize** on the top of your screen.
  <br />![alt text](/images/save_visualize.png)<br/><br/>
  
-### Creating Our Dashboard
+### 3. Creating Our Dashboard
 
 Documentation:  [Creating Your First Analysis](http://docs.aws.amazon.com/quicksight/latest/user/example-create-an-analysis.html), [Modifying Visuals](http://docs.aws.amazon.com/quicksight/latest/user/example-modify-visuals.html)
 
@@ -359,7 +359,7 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 <br />![alt text](/images/date_filter.png)<br/><br/>
 <br />![alt text](/images/filter_all_visuals.png)<br/><br/>
 
-### Sharing
+### 4. Sharing
 
 Documentation:  [Creating and Sharing Your First Dashboard](http://docs.aws.amazon.com/quicksight/latest/user/creating-a-dashboard.html)
 
@@ -380,7 +380,7 @@ Great job!  You have just created your first dashboard to be shared with the res
 
 One of the most compelling reasons for using Athena to query data on S3 is that you can query some really really BIG datasets.  In our next exercise we will use QuickSight and Athena to visualize 2.7 Billion records.  That's right, billion.
 
-### Connect to the dataset
+### 1. Connect to the Dataset
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
@@ -397,7 +397,7 @@ epochDate({pickup_datetime}/1000)
 Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are going to be working with nearly 3 billion records, we will want to query the data directly in S3 using Athena.
 <br />![alt text](/images/query.png)<br/><br/>
 
-### Creating Our Dashboard
+### 2. Creating Our Dashboard
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
@@ -433,4 +433,4 @@ Congratulations on creating your first Glue Crawlers, Athena Databases & Tables,
 
 For more tips and information about what's new in QuickSight, check out the [blog](https://quicksight.aws/resources/blog/) as well as the other [resources](https://quicksight.aws/resources/) on the website!
 
-# The end
+## The end
