@@ -254,13 +254,13 @@ You can choose either Standard or Enterprise Edition (the main difference today 
  <br />![alt text](/images/editions.png)<br/><br/>
 
 Next you will create and name for you account (you can name the account whatever you'd like) and a notification email address (set it to be your own email address). You will also see some prompts about enabling autodiscovery of your data in AWS sourcess, as well as access to Athena, S3 buckets, and S3 Storage analytics.  Check all the boxes. 
-<br />![alt text](/images/singup_options.png)<br/><br/>
+<br />![alt text](/images/signup_options.png)<br/><br/>
 
 **Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
  <br />![alt text](/images/signup_region.png)<br/><br/>
 
 Once you are finished your account will load with some sample datasets and dashboards.  
- <br />![alt text](/images/signup_complete.png)<br/><br/>
+ <br />![alt text](/images/singup_complete.png)<br/><br/>
 
 Alright, now we are ready to roll!
 
@@ -277,10 +277,12 @@ Open QuickSight and **choose 'Manage Data'** in the upper right hand corner:
  <br />![alt text](/images/new_dataset.png)<br/><br/>
  <br />![alt text](/images/athena.png)<br/><br/>
 
-Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table. Try to make sure you are choosing the orders table that was created automatically by Glue instead of the table that we created using the SQL statement (if you happen to pick the wrong one, no problem, you just won't need to do the step where we create a calculated field to change the order_date to a date field).  **Choose 'Edit/Preview Data'**.  If you clicked 'Select' instead, it's OK, just choose 'Edit/Preview Data' on the next screen and leave it on 'Import to SPICE for quicker analytics'.
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table. Try to make sure you are choosing the orders table that was created automatically by Glue instead of the table that we created using the SQL statement (if you happen to pick the wrong one, no problem, you just won't need to do the step where we create a calculated field to change the order_date to a date field).  **Choose 'Edit/Preview Data'**.  (If you clicked 'Select' instead, it's OK, just choose 'Edit/Preview Data' on the next screen and leave it on 'Import to SPICE for quicker analytics'.)
  <br />![alt text](/images/athena_tables.png)<br/><br/>
 
-Now we will join all the tables we had created in Athena by using the Glue data crawler.  Please refer to the documentation on the top of this section. Some tables join directly to the Orders table and some join to the Company table. To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
+Now we will join all the tables we had created in Athena by using the Glue data crawler. Some tables join directly to the Orders table and some join to the Company table. To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - to do this, click on the little venn diagrams in-between the tables you see on the screen.  They will all be based on the key which is named after the dimension table you are trying to join.  Set them all to 'Inner' joins and click 'Apply' after you finish each table.  
+
+When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
 ![alt text](/images/b2b%20joins.png)
 
