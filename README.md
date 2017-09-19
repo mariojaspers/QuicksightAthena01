@@ -85,12 +85,12 @@ TBLPROPERTIES ('has_encrypted_data'='false')
 ```
 6. Hit **Run Query**
 
-3. Run the following SQL statement and make sure that your table is reading correctly:
+7. Run the following SQL statement and make sure that your table is reading correctly:
 ```sql
 SELECT * 
 FROM labs.orders LIMIT 100
 ```
-4. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
+8. Show Create Table statement helps you better understand what it going on behind the scenes when creating a table.
 ```sql
 SHOW CREATE TABLE labs.orders
 ```
