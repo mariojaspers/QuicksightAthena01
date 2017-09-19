@@ -1,7 +1,7 @@
 # Quicksight and Athena Workshop - AWS & Slalom
-Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizaing it in QuickSight.
+Amazon QuickSight and Amazon Athena workshop. Workshop will focus on ingesting data into Athena, combining it with other data sources, and visualizing it in QuickSight.
 
-Hands on workshop is broken up into 5 different sections to get you familar with the Quicksight and Athena products:</br>
+Hands on workshop is broken up into 5 different sections to get you familiar with the Quicksight and Athena products:</br>
 - [10 min  - Sign Up for AWS](#sign-up-for-aws)</br>
 - [10 min - Architecture and Permissions](#architecture-and-permissions)</br>
 - [10 min - Query a file on S3](#query-a-file-on-s3)</br>
@@ -28,7 +28,7 @@ AWS provides a service to build resources out of predefined templates using Clou
 
 To create this we need to run a cloud formation template:
 1. Make sure you are in the N. Virginia Region
-1. Under services, click **CloudFormation** under Mangement Tools. </br>
+1. Under services, click **CloudFormation** under Management Tools. </br>
 ![alt text](/images/cloudFormation.PNG)</br></br>
 2. Click **Create Stack**
 3. Under "Choose a template", select the **"Specify an Amazon S3 template URL"** radio button option and enter this template url: 
@@ -41,12 +41,12 @@ https://s3-us-west-2.amazonaws.com/slalom-seattle-ima/scripts/cloudformation/cf_
 5. Hit **Next**
 5. Hit **Next**
 5. There is an acknowledge checkbox for you to review, and hit **Create**
-6. We will wait a couple minutes until the progess says CREATE_COMPLETE</br>
+6. We will wait a couple minutes until the progress says CREATE_COMPLETE</br>
 ![alt text](/images/cloudformationStatus.PNG)
 <hr/></br>
 
 # Query a file on S3
-To get started with Athena and QuickSight, we need to provide data to query. This data may orginate from a varierty of sources into S3, but for this example we will upload a file into S3 manually.
+To get started with Athena and QuickSight, we need to provide data to query. This data may originate from a variety of sources into S3, but for this example we will upload a file into S3 manually.
 1. **Open the S3 Console** from the Services drop down menu
 2. Click your newly created bucket, by you or by our CloudFormation script.
 1. Hit **Create folder** and name it "B2B"
@@ -222,8 +222,8 @@ LIMIT 100
 <br/>![alt text](/images/TopCustomersResults.PNG)<br/>
 
 ## Breakout 2 - Discover Instacart Data
-In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
-Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instcart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
+In this section, we will break out and follow the same instructions, but while loading data from another public source, Instacart. Instacart is a company that operates as a same-day grocery delivery service. Customers select groceries through a web application from various retailers and delivered by a personal shopper. 
+Instacart has published a public datasource to provide insight into consumer shopping trends for over 200,000 users. Data [Instacart in May 2017](https://tech.instacart.com/3-million-instacart-orders-open-sourced-d40d29ead6f2) to look at Instacart's customers' shopping pattern.  You can find the data dictionary for the data set [here](https://gist.github.com/jeremystan/c3b39d947d9b88b3ccff3147dbcf6c6b)
 
 - Source s3 bucket: **s3://royon-customer-public/instacart/**
 - Database: **labs**
@@ -250,10 +250,10 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 Go to your AWS console and search for QuickSight.  You will first be presented with a screen to sign up:
  <br />![alt text](/images/signup.png)<br/>
 
-You can choose either Standard or Enterprise Edition (the main difference today is that Enterprise edition can hook up to Active Directory, though there will be more funtionality in the future added to Enterprise Edition).  For purposes of our lab today Standard Edition is fine.  With both editions you get one free user, forever.
+You can choose either Standard or Enterprise Edition (the main difference today is that Enterprise edition can hook up to Active Directory, though there will be more functionality in the future added to Enterprise Edition).  For purposes of our lab today Standard Edition is fine.  With both editions you get one free user, forever.
  <br />![alt text](/images/editions.png)<br/>
 
-Next you will create and name for you account (you can name the account whatever you'd like) and a notification email address (set it to be your own email address). You will also see some prompts about enabling autodiscovery of your data in AWS sourcess, as well as access to Athena, S3 buckets, and S3 Storage analytics.  Check all the boxes. 
+Next you will create and name for you account (you can name the account whatever you'd like) and a notification email address (set it to be your own email address). You will also see some prompts about enabling autodiscovery of your data in AWS sources, as well as access to Athena, S3 buckets, and S3 Storage analytics.  Check all the boxes. 
 <br />![alt text](/images/signup_options.png)<br/>
 
 **Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
@@ -295,7 +295,7 @@ parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
-Once you are finished preprating the dataset, **choose Save & Visualize** on the top of your screen.
+Once you are finished preparing the dataset, **choose Save & Visualize** on the top of your screen.
  <br />![alt text](/images/save_visualize.png)<br/><br/>
  
 ### Creating Our Dashboard
