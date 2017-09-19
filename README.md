@@ -248,13 +248,13 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 ### Setting up your QuickSight Account
 
 Go to your AWS console and search for QuickSight.  You will first be presented with a screen to sign up:
- <br />![alt text](/images/signup.png)<br/><br/>
+ <br />![alt text](/images/signup.png)<br/>
 
 You can choose either Standard or Enterprise Edition (the main difference today is that Enterprise edition can hook up to Active Directory, though there will be more funtionality in the future added to Enterprise Edition).  For purposes of our lab today Standard Edition is fine.  With both editions you get one free user, forever.
- <br />![alt text](/images/editions.png)<br/><br/>
+ <br />![alt text](/images/editions.png)<br/>
 
 Next you will create and name for you account (you can name the account whatever you'd like) and a notification email address (set it to be your own email address). You will also see some prompts about enabling autodiscovery of your data in AWS sourcess, as well as access to Athena, S3 buckets, and S3 Storage analytics.  Check all the boxes. 
-<br />![alt text](/images/signup_options.png)<br/><br/>
+<br />![alt text](/images/signup_options.png)<br/>
 
 **Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
  <br />![alt text](/images/signup_region.png)<br/><br/>
