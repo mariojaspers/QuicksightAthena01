@@ -252,25 +252,42 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 # Visualizing and Dashboarding with QuickSight
 
-## Getting the data
+## Exercise 1
+
+### Setting up your QuickSight Account
+
+Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition - the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition.  You can always upgrade you account later so it really doesnt matter.  With both editions you get one free user forever.
+
+You can name the account whatever you'd like.  You can also set the email to be your own email address.
+
+You will see some prompts about enabling access to S3 buckets, to Athena, and autodiscovery of other AWS datasources.  Check all the boxes. 
+<br />![alt text](/images/acct_setup.png)<br/><br/>
+
+**Note - Make sure you launch QuickSight in the same region you have chosen for Athena.**
+
+Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
+
+### Connecting To The Data
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
 **Choose 'New Dataset'** and then select **Athena**.
 
-Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  Choose 'Edit/Preview Data'.
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the B2B tables and select the b2b_orders table.  **Choose 'Edit/Preview Data'**.
 
 Now we will join all the tables we had created in Athena by using the Glue data crawler.  Some tables join directly to the Orders table and some join to the Company table.  To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - they will all be based on the key which is named after the dimension table you are trying to join.  When you are finished it should look soemthing like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
 ![alt text](/images/b2b%20joins.png)
 
-Before we start visualizing, lets also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the sting field to a date field.  Use these formulas for each calculated field:
+Before we start visualizing, let's also add a couple calculated fields to convert the date fields, order_date and ship_date to date fields rather than strings (normally we could just change the datatype in QuickSight in the data preview window, but Athena does not support this today.  It will soon, and you could do this for any other type of data source, but for Athena we will need to make calculated fields).  On the left side choose 'New Field' and then use the parseDate() function to convert the string field to a date field.  Use these formulas for each calculated field:
 ```python
 parseDate({order_date},'MM/dd/yyyy')
 parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
+### Creating Our Dashboard
+
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
 First click on 'sales' and we will get a KPI visual type.  Then click on the Field Wells on the top and use the pull down menu to choose 'Show As->Currency':
@@ -316,7 +333,6 @@ Let's repeat this last step to add two more KPI's to the top of the dashboard.  
 The second one will be a KPI for the number of unique orders YoY.  To do this, select the KPI visual type and drag 'order_id' to the 'Value' field well and 'Order Date' to the 'Trend group' field well.  Change the aggregation on 'order_id' from Count to Count Distinct:
 <br />![alt text](/images/orders_kpi.png)<br/><br/>
 
-
 For the third KPI, let's show a YoY trend of the average order size.  Click 'sales' and then use the pull down menu on the field to change the aggregation to Average.  Add the 'Order Date' to the 'Trend group' field well like we did for the first KPI:
 <br />![alt text](/images/avg_sales.png)<br/><br/>
 
@@ -330,6 +346,8 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 <br />![alt text](/images/date_filter.png)<br/><br/>
 <br />![alt text](/images/filter_all_visuals.png)<br/><br/>
 
+### Sharing
+
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
 <br />![alt text](/images/create_dash.png)<br/><br/>
 
@@ -339,3 +357,60 @@ On the next screen you will be able to share it with other users in your QuickSi
 Once you add them you can click 'Share' and it will send them an email saying a dashboard has been shared with them.  Also the next time they log into QuickSight they will see it in the list of dashboards they have access to.
 
 Great job!  You have just created your first dashboard to be shared with the rest of your team!
+
+<br />![alt text](/images/dash.png)<br/><br/>
+
+
+## Exercise 2 - Visualizing NY Taxi Data
+
+One of the most compelling reasons for using Athena to query data on S3 is that you can query some really really BIG datasets.  In our next exercise we will use QuickSight and Athena to visualize 2.7 Billion records.  That's right, billion.
+
+### Connect to the dataset
+
+Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
+
+**Choose 'New Dataset'** and then select **Athena**.
+
+Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the NY taxi data and select the appropriate table.  **Choose 'Edit/Preview Data'**.
+
+Before we start visualizing, let's  add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
+```python
+epochDate({pickup_datetime}/1000)
+```
+![alt text](/images/epoch.png)<br/><br/>
+
+Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
+<br />![alt text](/images/query.png)<br/><br/>
+
+### Creating Our Dashboard
+
+Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
+
+Select 'passenger_count' and then use the pull down menu to change the aggregation to Count.  Then use the pull down menu again and choose 'Format->1234.57' to round to two decimal places.  The KPI will show that we have 2.67 billion records in the dataset.  Pretty impressive performance on a dataset of that size!
+<br />![alt text](/images/count.png)<br/>
+<br />![alt text](/images/count2.png)<br/><br/>
+
+Let's add another visual.  This time select 'Pickup Date' (the calculated field you created).  You should get a line chart.  Use the pull down menu and change the aggregation to Week.  Then expand the axis range on the bottom of the visual.
+<br />![alt text](/images/lines_taxi.png)<br/><br/>
+
+Select the 'type' field and you should get three lines, one for each type of taxi:
+<br />![alt text](/images/type_lines.png)<br/><br/>
+
+Let's add another visual.  This one will also be a time trend but we will look at the data YoY.  First change the visual type to a Line Chart.  Then drag the 'month' field to the X axis field well and the 'year' field to the Color field well.
+
+Notice the months on the bottom are out of order.  Since the field is a string data type the months are sorted in alphabetical order.  To fix this we must edit the dataset and change the data types for these columns.  Use the dropdown menu for the name of your dataset and choose 'Edit analysis data sets' and then click 'Edit' on the next screen:
+<br />![alt text](/images/edit_dataset.png)<br/><br/>
+<br />![alt text](/images/edit_dataset2.png)<br/><br/>
+
+Click on the 'a' icon underneath both of these fields in the data preview window and change them both to 'Int':
+<br />![alt text](/images/int.png)<br/><br/>
+
+Choose 'Save & visualize'.  Now the months on our line chart should be sorted in the correct order:
+<br />![alt text](/images/months_correct.png)<br/><br/>
+
+One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
+
+Feel free to continue exploring this data. There arent a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go nuts with it!
+
+
+# The end
