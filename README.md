@@ -281,8 +281,8 @@ Give it a name and **choose 'Create Data Source'**. Find the database you create
  <br />![alt text](/images/athena_tables.png)<br/><br/>
 
 Now we will join all the tables we had created in Athena by using the Glue data crawler. Some tables join directly to the Orders table and some join to the Company table. To join a table to something other than the first one we selected (Orders) drag and drop it on top of the table you want to join it to.  You will then need to define the join clauses - to do this, click on the little venn diagrams in-between the tables you see on the screen.  They will all be based on the key which is named after the dimension table you are trying to join.  Set them all to 'Inner' joins and click 'Apply' after you finish each table.
-![alt text](/images/joins1.png)
-![alt text](/images/joins2.png)
+![alt text](/images/join1.png)
+![alt text](/images/join2.png)
 
 When you are finished it should look something like this (we will skip the Segment and Product tables as the crawler didn't pick up the headers correctly - we can correct this using a Glue ETL job, but for purposes of this lab we can just leave these two tables out of our new dataset):
 
