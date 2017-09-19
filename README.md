@@ -267,7 +267,14 @@ You will see some prompts about enabling access to S3 buckets, to Athena, and au
 
 Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
 
+Here is some documenatation on getting familiar with the UI:  
+Navigating the UI:  http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html
+
 ### Connecting To The Data
+
+Documentation:
+Data Prepratation:  http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html
+Table Joins:  http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
@@ -286,7 +293,13 @@ parseDate({ship_date},'MM/dd/yyyy')
 ```
  <br />![alt text](/images/calculated_dates.png)<br/><br/>
  
+ Once you are finished preprating the dataset, **choose Save & Visualize** on the top of your screen.
+ 
 ### Creating Our Dashboard
+
+Documentation:
+http://docs.aws.amazon.com/quicksight/latest/user/example-create-an-analysis.html
+http://docs.aws.amazon.com/quicksight/latest/user/example-modify-visuals.html
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
@@ -373,13 +386,13 @@ Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
 Give it a name and **choose 'Create Data Source'**. Find the database you created earlier which contains the NY taxi data and select the appropriate table.  **Choose 'Edit/Preview Data'**.
 
-Before we start visualizing, let's  add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
+Before we start visualizing, let's add a calculated field to convert the date field.  The date field in this dataset is in Epoch date format.  Therefore we will use a function to convert it to a more usable format.  On the left side choose 'New Field' and then use the epochDate() function to convert pickup_datetime field to a date field.  It is measured down to the millisecond, so we will also divide the integer by 1000 to get it into seconds before converting.  Use this formula:
 ```python
 epochDate({pickup_datetime}/1000)
 ```
 ![alt text](/images/epoch.png)<br/><br/>
 
-Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are goign to be working with over 2 billion records, we will want to query the data directly in S3 using Athena.
+Make sure we keep it set to 'Query' rather than SPICE, which is different from what we did in the first exercise (actually when doing table joins QuickSight forces you to use SPICE, but when connecting to individual tables we get this choice).  Since we are going to be working with nearly 3 billion records, we will want to query the data directly in S3 using Athena.
 <br />![alt text](/images/query.png)<br/><br/>
 
 ### Creating Our Dashboard
@@ -410,7 +423,7 @@ Choose 'Save & visualize'.  Now the months on our line chart should be sorted in
 
 One of the first things you will notice is that there is a huge drop in Feb on the 2010 line.  A quick google search for 'nyc feb 2010' will reveal that there was a huge blizzard in Feb 2010!  Makes sense why there were less rides for that month.
 
-Feel free to continue exploring this data. There arent a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go nuts with it!
+Feel free to continue exploring this data. There aren't a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go wild with it!
 
 
 # The end
