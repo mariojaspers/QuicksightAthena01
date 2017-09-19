@@ -427,10 +427,16 @@ One of the first things you will notice is that there is a huge drop in Feb on t
 
 Feel free to continue exploring this data. There aren't a ton more dimensions to play with - the dataset was meant to highlight the scale of how many records Athena + S3 can handle rather than analytical depth - but go wild with it!
 
-One thing you could try is how to [Create a Story](http://docs.aws.amazon.com/quicksight/latest/user/working-with-stories.html).  For instance you could capture a scene of the YoY trend visual, then filter to 2010 and capture another scene to highlight the drop in Feb 2010 due to the blizzard.
+### 3. (Optional) Create A Story
+
+[How to createa a Story](http://docs.aws.amazon.com/quicksight/latest/user/working-with-stories.html)
+
+In addiition to creating and sharing dashboards, you can also create and share 'stories'. They are great if you have found something interesting in the data and you would like to lead you users to that particular finding.  For instance, using our last finding you could capture a 'scene' of the YoY trend visual, then filter to 2010 and capture another 'scene' to highlight the drop in Feb 2010 due to the blizzard.
+
+### Conclusion
 
 Congratulations on creating your first Glue Crawlers, Athena Databases & Tables, and QuickSight Analyses and Dashboards!  You are now well versed in Serverless Analytics!
 
 For more tips and information about what's new in QuickSight, check out the [blog](https://quicksight.aws/resources/blog/) as well as the other [resources](https://quicksight.aws/resources/) on the website!
 
-## The end
+### The End
