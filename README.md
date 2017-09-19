@@ -256,7 +256,9 @@ For more great tips view [this post](https://aws.amazon.com/blogs/big-data/top-1
 
 ### Setting up your QuickSight Account
 
-Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition - the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition.  You can always upgrade you account later so it really doesnt matter.  With both editions you get one free user forever.
+Go to your AWS console and search for QuickSight.  You can choose either Standard or Enterprise Edition (the main difference today is that in Enterprise edition you can hook it up to Active Directory, and though we won't be doing that today, there will be more funtionality in the future added to Enterprise Edition).  You can always upgrade you account later so it doesn't matter all that much for purposes of our lab today.  
+
+With both editions you get one free user, forever.
 
 You can name the account whatever you'd like.  You can also set the email to be your own email address.
 
@@ -267,16 +269,11 @@ You will see some prompts about enabling access to S3 buckets, to Athena, and au
 
 Once you are finished your account will load with some sample datasets and dashboards.  Alright, now we are ready to roll!
 
-Here is some documenatation on getting familiar with the UI: 
-
-[Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
+Here is some documenatation on getting familiar with the UI:  [Navigating the UI](http://docs.aws.amazon.com/quicksight/latest/user/navigating-the-quicksight-ui.html)
 
 ### Connecting To The Data
 
-Documentation:
-
-[Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html)
-[Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
+Documentation:  [Data Preparation](http://docs.aws.amazon.com/quicksight/latest/user/example-prepared-data-set.html), [Table Joins](http://docs.aws.amazon.com/quicksight/latest/user/joining-tables.html)
 
 Open QuickSight and **choose 'Manage Data'** in the upper right hand corner.
 
@@ -299,10 +296,7 @@ parseDate({ship_date},'MM/dd/yyyy')
  
 ### Creating Our Dashboard
 
-Documentation:
-
-[Creating Your First Analysis](http://docs.aws.amazon.com/quicksight/latest/user/example-create-an-analysis.html)
-[Modifying Visuals](http://docs.aws.amazon.com/quicksight/latest/user/example-modify-visuals.html)
+Documentation:  [Creating Your First Analysis](http://docs.aws.amazon.com/quicksight/latest/user/example-create-an-analysis.html), [Modifying Visuals](http://docs.aws.amazon.com/quicksight/latest/user/example-modify-visuals.html)
 
 Great, now we are ready to begin visualizing our data.  By default AutoGraph is chosen as the visual type, which will pick an appropriate visual type depending on the types of fields choose to visualize.  We can leave it like that for now, and later we will specify certain visual types.
 
@@ -364,9 +358,7 @@ Awesome!  Our dashboard is looking really good.  We are almost ready to share it
 
 ### Sharing
 
-Documentation:
-
-[Creating and Sharing Your First Dashboard](http://docs.aws.amazon.com/quicksight/latest/user/creating-a-dashboard.html)
+Documentation:  [Creating and Sharing Your First Dashboard](http://docs.aws.amazon.com/quicksight/latest/user/creating-a-dashboard.html)
 
 We are ready to share our dashboard with the rest of our users now!  Click the 'Share' button in the upper right of the screen and select 'Create Dashboard'. Give it a name like 'Sales Dashboard' and choose 'Create Dashboard'.  
 <br />![alt text](/images/create_dash.png)<br/><br/>
@@ -434,6 +426,8 @@ Feel free to continue exploring this data. There aren't a ton more dimensions to
 
 One thing you could try is how to [Create a Story](http://docs.aws.amazon.com/quicksight/latest/user/working-with-stories.html).  For instance you could capture a scene of the YoY trend visual, then filter to 2010 and capture another scene to highlight the drop in Feb 2010 due to the blizzard.
 
-Congratulations on creating your first Glue Crawlers, Athena Databases & Tables, and QuickSight Analyses and Dasbhoards!  You are now well versed in Serverless Analytics!
+Congratulations on creating your first Glue Crawlers, Athena Databases & Tables, and QuickSight Analyses and Dashboards!  You are now well versed in Serverless Analytics!
+
+For more tips and information about what's new in QuickSight, check out the [blog](https://quicksight.aws/resources/blog/) as well as the other [resources](https://quicksight.aws/resources/) on the website!
 
 # The end
