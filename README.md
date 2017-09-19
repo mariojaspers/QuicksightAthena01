@@ -307,7 +307,7 @@ Great, we have our first visual!  Now let's add another visual using the '+' but
 For our next visual, let's start by clicking 'industry_name' and 'sales'.  We will get a bar chart sorted in descending order by sales:
 <br />![alt text](/images/industry_chart.png)<br/><br/>
 
-Let's add a drill down capability for our end users by dragging the 'company_name' field just below the 'industry_name' field on the  Y axis.  You should see a notification that says 'Add drill-down layer':
+Let's add a drill down capability for our end users by dragging the 'company_name' field just below the 'industry_name' field on the  Y axis field well.  You should see a notification that says 'Add drill-down layer':
 <br />![alt text](/images/add_drilldown.png)<br/><br/>
 
 Cool, now our end users will be able to drill down from Industry to the actual Companies in that industry.  You can see how this works by clicking on one of the bars and selecting 'Drill down to company_name':
